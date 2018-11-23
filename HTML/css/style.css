@@ -3324,7 +3324,7 @@ footer {
 
 /** Coming soon start **/
 .coming-soon-bg {
-    background: rgba(0, 0, 0, 0.04) url(http://placehold.it/1920x1000) top left repeat;
+    background: rgba(0, 0, 0, 0.9) url(../img/house.jpg) top left repeat;
     background-size: cover;
     top: 0;
     width: 100%;
@@ -3334,8 +3334,9 @@ footer {
 }
 
 .coming-soon-inner img {
-    margin-bottom: 20px;
-    height: 40px;
+    margin-bottom: 200px;
+    height: 101px;
+    width: 447px;
 }
 
 .coming-soon-inner {
