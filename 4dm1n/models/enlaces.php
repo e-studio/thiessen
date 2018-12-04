@@ -6,27 +6,28 @@ class EnlacesModels{
 
 		if($enlaces == "inicio" ||
 		   $enlaces == "ingreso" ||
-		   //$enlaces == "pagina1" ||
-		   //$enlaces == "alta1" ||
 		   $enlaces == "registroUsuario" ||
-		   $enlaces == "lostPassword"){
-		   //$enlaces == "usuarios" ||
-		   //$enlaces == "galeria" ||
-		   //$enlaces == "videos" ||
-		   //$enlaces == "suscriptores" ||
-		   //$enlaces == "mensajes" ||
+		   $enlaces == "lostPassword"||
+		   $enlaces == "propiedades" ||
+		   $enlaces == "mis-propiedades" ||
+		   $enlaces == "agrega-propiedad" ||
+		   $enlaces == "edita-propiedad" ||
+		   $enlaces == "mis-usuarios" ||
+		   $enlaces == "agrega-usuario" ||
+		   $enlaces == "edita-usuario"
 		   //$enlaces == "perfil" ||
 		   //$enlaces == "salir"){
+		   ){
 
 			$module = "views/modules/".$enlaces.".php";
-		}	
+		}
 
 		else if($enlaces == "index"){
 			$module = "views/modules/login.php";
 		}
 
 		else{
-			$module = "views/modules/login.php";		
+			$module = "views/modules/login.php";
 		}
 
 		return $module;

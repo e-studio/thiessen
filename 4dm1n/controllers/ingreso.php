@@ -6,19 +6,23 @@ class Ingreso{
 
 		if(isset($_POST["usuarioIngreso"])){
 
-			if(preg_match('/^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i', $_POST["usuarioIngreso"])&&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["passwordIngreso"])){
+			if(preg_match('/^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i', $_POST["passwordIngreso"])&&
+			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuarioIngreso"])){
 
 			   	#$encriptar = crypt($_POST["passwordIngreso"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-				$datosController = array("email"=>$_POST["usuarioIngreso"],"password"=>$_POST["passwordIngreso"]);
+				$datosController = array("email"=>$_POST["usuarioIngreso"],
+					                     "password"=>$_POST["passwordIngreso"]);
 
 				$respuesta = IngresoModels::ingresoModel($datosController, "usuarios");
 
-				echo '<script>alert("'.$respuesta.'");</script>';
+				foreach ($respuesta as $row => $item){
+					echo'<script>alert("'.$item["id"].$item["nombre"].' -> '.$item["telefono"].'->'.$item["email"].'");</script>';
+					}
+					echo '<div class="alert alert-danger">Ha fallado 3 veces, demuestre que no es un robot</div>';
 
-
-			/*	if($respuesta['email'] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
+/*
+				if($respuesta['email'] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
 					echo '<script>alert("'.$_POST["usuarioIngreso"].' Sopas");</script>';
 				}
 				else{

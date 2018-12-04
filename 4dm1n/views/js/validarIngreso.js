@@ -1,16 +1,17 @@
 function validarIngreso(){
+/*
+	var expresionPass = /^[a-zA-Z0-9]*$/;
+	var expresionUsuario = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
 
-	var expresion = /^[a-zA-Z0-9]*$/;
-
-	if(!expresion.test($("#usuarioIngreso").val())){
-
-		return false;
-	}
-
-	if(!expresion.test($("#passwordIngreso").val())){
+	if(!expresionUsuario.test($("#usuarioIngreso").val())){
 
 		return false;
 	}
+
+	if(!expresionPass.test($("#passwordIngreso").val())){
+
+		return false;
+	}*/
 
 	return true;
 

@@ -7,20 +7,20 @@ class IngresoModels{
 	public function ingresoModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE email = :email AND password = :password");
+		//select * from usuarios where email='rickyurbina@gmail.com' and PASSWORD = '123'
 
 		$stmt -> bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 		$stmt -> bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
 
-		if($stmt->execute()){
-			return "ok";
-		}
-		else{
-			return "error";
-		}
-
+		$stmt -> execute();
+		return $stmt -> fetchAll();
 		$stmt->close();
 
 	}
+
+
+
+
 
 	public function intentosModel($datosModel, $tabla){
 
