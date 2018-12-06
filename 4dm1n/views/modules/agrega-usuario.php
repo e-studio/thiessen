@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 
 if(!$_SESSION["validar"]){
 
@@ -8,9 +8,10 @@ if(!$_SESSION["validar"]){
     exit();
 
 
-}
+}*/
 include "navAdmin.php";
  ?>
+<form action="" method="POST" enctype="multipart/form-data">
 <div class="col-sm-12 col-md-6"><h4>Registrar Nuevo Usuario</h4></div>
 <div class="dashboard-list">
     <h3 class="heading">Datos Personales</h3>
@@ -19,7 +20,7 @@ include "navAdmin.php";
             <div class="col-lg-3 col-md-3">
                 <!-- Edit profile photo -->
                 <div class="edit-profile-photo">
-                    <img src="http://placehold.it/198x165" alt="profile-photo" class="img-fluid">
+                    <img src="http://placehold.it/198x165" alt="profile-photo" class="img-fluid previsualizar">
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>
@@ -29,40 +30,39 @@ include "navAdmin.php";
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
-                <form action="#" method="GET" enctype="multipart/form-data">
+
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group name">
-                                <label>Your Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="John Deo">
+                                <label>Nombre</label>
+                                <input required type="text" name="name" class="form-control" placeholder="Nombre completo">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group email">
-                                <label>Your Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Your Title">
+                                <label>Puesto</label>
+                                <input required type="text" name="title" class="form-control" placeholder="Puesto en la empresa">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group subject">
-                                <label>Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone">
+                                <label>Telefono</label>
+                                <input required type="text" name="phone" class="form-control" placeholder="Telefono de contacto">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input required type="email" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group message">
-                                <label>Personal info</label>
-                                <textarea class="form-control" name="message" placeholder="Personal info"></textarea>
+                                <label>Información Personal</label>
+                                <textarea required class="form-control" name="personal" placeholder="ej. Activo, gusta de la buena musica, etc"></textarea>
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -70,80 +70,72 @@ include "navAdmin.php";
 <div class="row">
     <div class="col-md-6">
         <div class="dashboard-list">
-            <h3 class="heading">Change Password</h3>
+            <h3 class="heading">Password</h3>
             <div class="dashboard-message contact-2">
-                <form action="#" method="GET" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="form-group name">
-                                <label>Current Password</label>
-                                <input type="password" name="current-password" class="form-control" placeholder="Current Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
                             <div class="form-group email">
-                                <label>New Password</label>
-                                <input type="password" name="new-password" class="form-control" placeholder="New Password">
+                                <label>Password</label>
+                                <input required type="password" name="new-password" class="form-control" placeholder="Nuevo Password">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
-                                <label>Confirm New Password</label>
-                                <input type="password" name="confirm-new-password" class="form-control" placeholder="Confirm New Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="send-btn">
-                                <button type="submit" class="btn btn-md button-theme">Change Password</button>
+                                <label>Confirma Password</label>
+                                <input required type="password" name="confirm-new-password" class="form-control" placeholder="Confirme Password">
                             </div>
                         </div>
                     </div>
-                </form>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="send-btn">
+                <button type="submit" class="btn btn-md button-theme">Registrar Usuario</button>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="dashboard-list">
-            <h3 class="heading">Socials</h3>
+            <h3 class="heading">Redes Sociales</h3>
             <div class="dashboard-message contact-2">
-                <form action="#" method="GET" enctype="multipart/form-data">
+                <!-- <form action="#" method="GET" enctype="multipart/form-data"> -->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group name">
                                 <label>Facebook</label>
-                                <input type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
+                                <input required type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group email">
                                 <label>Twitter</label>
-                                <input type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
+                                <input required type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
-                                <label>Vkontakte</label>
-                                <input type="text" name="vkontakte" class="form-control" placeholder="vk.com">
+                                <label>LinkedIn</label>
+                                <input required type="text" name="vkontakte" class="form-control" placeholder="linkedin.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group number">
                                 <label>Whatsapp</label>
-                                <input type="email" name="whatsapp" class="form-control" placeholder="https://www.whatsapp.com">
+                                <input required type="email" name="whatsapp" class="form-control" placeholder="https://www.whatsapp.com">
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="send-btn">
-                                <button type="submit" class="btn btn-md button-theme">Send Changes</button>
-                            </div>
-                        </div>
+
                     </div>
-                </form>
+
             </div>
         </div>
-    </div>
-</div>
 
+    </div>
+</div> <!-- row -->
+</form>
 <?php
-include "footer.php";
+    $crearUsuario = new MvcController();
+    $crearUsuario -> ctrCrearUsuario();
+
+    include "footer.php";
  ?>

@@ -1,14 +1,14 @@
 <?php
-session_start();
+// session_start();
 
-if(!$_SESSION["validar"]){
+// if(!$_SESSION["validar"]){
 
-    header("location:index.php");
+//     header("location:index.php");
 
-    exit();
+//     exit();
 
 
-}
+// }
 include "navAdmin.php";
  ?>
 <div class="col-sm-12 col-md-6"><h4>Editar Mis Datos</h4></div>

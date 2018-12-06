@@ -43,6 +43,12 @@
     <script  src="js/html5shiv.min.js"></script>
     <script  src="js/respond.min.js"></script>
     <![endif]-->
+
+    <!-- SweetAlert 2 -->
+    <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+
+
 </head>
 <body>
 <div class="page_loader"></div>
@@ -52,8 +58,6 @@
         $modulos = new Enlaces();
         $modulos -> enlacesController();
     ?>
-
-
 
 
 
@@ -86,6 +90,9 @@
 <script  src="views/js/jquery.countdown.js"></script>
 <script  src="views/js/maps.js"></script>
 <script  src="views/js/app.js"></script>
+
+<!-- script para subir fotos -->
+<script  src="views/js/fotos.js"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="views/js/ie10-viewport-bug-workaround.js"></script>
