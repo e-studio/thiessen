@@ -26,7 +26,7 @@ class MvcController{
 
 
 					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
-					echo "<script>alert(".getimagesize($_FILES["nuevaFoto"]["tmp_name"]).")</script>";
+					//echo "<script>alert(".getimagesize($_FILES["nuevaFoto"]["tmp_name"]).")</script>";
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
@@ -50,7 +50,7 @@ class MvcController{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "views/img/usuarios/".$_POST["name"]."/".$aleatorio.".jpg";
+						$ruta = "views/img/usuarios/".$aleatorio.".jpg";
 
 						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
@@ -70,7 +70,7 @@ class MvcController{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "views/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+						$ruta = "views/img/usuarios/".$aleatorio.".png";
 
 						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
