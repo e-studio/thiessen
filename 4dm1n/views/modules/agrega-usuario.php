@@ -20,7 +20,7 @@ include "navAdmin.php";
             <div class="col-lg-3 col-md-3">
                 <!-- Edit profile photo -->
                 <div class="edit-profile-photo">
-                    <img src="" alt="profile-photo" class="img-fluid previsualizar">
+                    <img src="views/img/usuarios/usuario.png" alt="profile-photo" class="img-fluid previsualizar">
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>

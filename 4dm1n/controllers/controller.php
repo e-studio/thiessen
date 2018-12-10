@@ -9,11 +9,11 @@ class MvcController{
 	=============================================*/
 
 	static public function ctrCrearUsuario(){
-		$mailPattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
-
+		
 		if(isset($_POST["email"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["name"]) &&
+			   preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i', $_POST["email"]) &&
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["new-password"])){
 
 			   	/*=============================================
@@ -26,7 +26,6 @@ class MvcController{
 
 
 					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
-					//echo "<script>alert(".getimagesize($_FILES["nuevaFoto"]["tmp_name"]).")</script>";
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
@@ -36,7 +35,9 @@ class MvcController{
 
 					$directorio = "views/img/usuarios";
 
-					mkdir($directorio, 0755);
+					if (!file_exists($directorio)) {     // si el directorio no existe lo creamos  
+						mkdir($directorio, 0755);
+					}
 
 					/*=============================================
 					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -82,6 +83,9 @@ class MvcController{
 
 					}
 
+				}
+				else {
+					$ruta = 'views/img/usuarios/usuario.png';
 				}
 
 				$tabla = "usuarios";
