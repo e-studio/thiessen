@@ -39,7 +39,7 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="http://placehold.it/45x45" alt="avatar">
+                                    <img src="" alt="avatar">
                                     Mi Cuenta
                                 </a>
                                 <div class="dropdown-menu">

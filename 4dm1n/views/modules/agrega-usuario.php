@@ -20,11 +20,11 @@ include "navAdmin.php";
             <div class="col-lg-3 col-md-3">
                 <!-- Edit profile photo -->
                 <div class="edit-profile-photo">
-                    <img src="http://placehold.it/198x165" alt="profile-photo" class="img-fluid previsualizar">
+                    <img src="" alt="profile-photo" class="img-fluid previsualizar">
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>
-                            <input type="file" class="upload">
+                            <input type="file" name="nuevaFoto" class="upload">
                         </div>
                     </div>
                 </div>
@@ -41,13 +41,13 @@ include "navAdmin.php";
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group email">
                                 <label>Puesto</label>
-                                <input required type="text" name="title" class="form-control" placeholder="Puesto en la empresa">
+                                <input type="text" name="title" class="form-control" placeholder="Puesto en la empresa">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group subject">
                                 <label>Telefono</label>
-                                <input required type="text" name="phone" class="form-control" placeholder="Telefono de contacto">
+                                <input type="text" name="phone" class="form-control" placeholder="Telefono de contacto">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -56,10 +56,25 @@ include "navAdmin.php";
                                 <input required type="email" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group number">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" name="fechaNac" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group number">
+                                <label>Perfil de Usuario</label>
+                                <select name="profile" class="form-control">
+                                  <option value="usuario">Usuario</option>
+                                  <option value="administrador">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group message">
                                 <label>Información Personal</label>
-                                <textarea required class="form-control" name="personal" placeholder="ej. Activo, gusta de la buena musica, etc"></textarea>
+                                <textarea class="form-control" name="personal" placeholder="ej. Activo, gusta de la buena musica, etc"></textarea>
                             </div>
                         </div>
                     </div>
@@ -82,7 +97,7 @@ include "navAdmin.php";
                         <div class="col-lg-12">
                             <div class="form-group subject">
                                 <label>Confirma Password</label>
-                                <input required type="password" name="confirm-new-password" class="form-control" placeholder="Confirme Password">
+                                <input type="password" name="confirm-new-password" class="form-control" placeholder="Confirme Password">
                             </div>
                         </div>
                     </div>
@@ -98,35 +113,26 @@ include "navAdmin.php";
         <div class="dashboard-list">
             <h3 class="heading">Redes Sociales</h3>
             <div class="dashboard-message contact-2">
-                <!-- <form action="#" method="GET" enctype="multipart/form-data"> -->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group name">
                                 <label>Facebook</label>
-                                <input required type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
+                                <input type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group email">
                                 <label>Twitter</label>
-                                <input required type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
+                                <input type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
                                 <label>LinkedIn</label>
-                                <input required type="text" name="vkontakte" class="form-control" placeholder="linkedin.com">
+                                <input type="text" name="linkedin" class="form-control" placeholder="linkedin.com">
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="form-group number">
-                                <label>Whatsapp</label>
-                                <input required type="email" name="whatsapp" class="form-control" placeholder="https://www.whatsapp.com">
-                            </div>
-                        </div>
-
                     </div>
-
             </div>
         </div>
 

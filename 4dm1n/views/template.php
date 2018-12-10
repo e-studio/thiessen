@@ -28,8 +28,8 @@
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="views/img/favicon.ico" type="image/x-icon" >
 
-    <!-- Google fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,300,700">
+    <!-- Google fonts
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,300,700">-->
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="views/css/ie10-viewport-bug-workaround.css">

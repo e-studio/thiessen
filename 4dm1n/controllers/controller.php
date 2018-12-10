@@ -9,12 +9,12 @@ class MvcController{
 	=============================================*/
 
 	static public function ctrCrearUsuario(){
+		$mailPattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 
-		if(isset($_POST["nuevoUsuario"])){
+		if(isset($_POST["email"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["name"]) &&
+			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["new-password"])){
 
 			   	/*=============================================
 				VALIDAR IMAGEN
@@ -24,8 +24,9 @@ class MvcController{
 
 				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
 
-					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
 
+					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+					echo "<script>alert(".getimagesize($_FILES["nuevaFoto"]["tmp_name"]).")</script>";
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
@@ -33,7 +34,7 @@ class MvcController{
 					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 					=============================================*/
 
-					$directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
+					$directorio = "views/img/usuarios";
 
 					mkdir($directorio, 0755);
 
@@ -49,7 +50,7 @@ class MvcController{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+						$ruta = "views/img/usuarios/".$_POST["name"]."/".$aleatorio.".jpg";
 
 						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
@@ -69,7 +70,7 @@ class MvcController{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+						$ruta = "views/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
 
 						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
@@ -84,16 +85,26 @@ class MvcController{
 				}
 
 				$tabla = "usuarios";
+				$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
 
-				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+				//$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-				$datos = array("nombre" => $_POST["nuevoNombre"],
-					           "usuario" => $_POST["nuevoUsuario"],
-					           "password" => $encriptar,
-					           "perfil" => $_POST["nuevoPerfil"],
-					           "foto"=>$ruta);
+				$datos = array("nombre" => $_POST["name"],
+							   "telefono" => $_POST["phone"],
+					           "email" => $_POST["email"],
+					           "password" => $_POST["new-password"],
+					           //"password" => $encriptar,
+					           "personal" => $_POST["personal"],
+					           "titulo" => $_POST["title"],
+					           "perfil" => $_POST["profile"],
+					           "foto"=>$ruta,
+					           "estado" => "1",
+					           "ultimo_login" => 'NULL',
+					           "fechaNac" => $_POST["fechaNac"],
+					           "sociales" => json_encode($socials));
 
-				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+				$respuesta = Datos::mdlIngresarUsuario($tabla, $datos);
+
 
 				if($respuesta == "ok"){
 
@@ -110,7 +121,7 @@ class MvcController{
 
 						if(result.value){
 
-							window.location = "usuarios";
+							window.location = "index.php?action=agrega-usuario";
 
 						}
 
@@ -138,7 +149,7 @@ class MvcController{
 
 						if(result.value){
 
-							window.location = "usuarios";
+							window.location = "index.php?action=agrega-usuario";
 
 						}
 
