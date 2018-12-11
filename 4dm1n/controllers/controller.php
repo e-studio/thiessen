@@ -9,7 +9,7 @@ class MvcController{
 	=============================================*/
 
 	static public function ctrCrearUsuario(){
-		
+
 		if(isset($_POST["email"])){
 
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["name"]) &&
@@ -20,7 +20,7 @@ class MvcController{
 				VALIDAR IMAGEN
 				=============================================*/
 
-				$ruta = "";
+				$ruta = "views/img/usuarios/usuario.png";
 
 				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
 
@@ -35,7 +35,7 @@ class MvcController{
 
 					$directorio = "views/img/usuarios";
 
-					if (!file_exists($directorio)) {     // si el directorio no existe lo creamos  
+					if (!file_exists($directorio)) {     // si el directorio no existe lo creamos
 						mkdir($directorio, 0755);
 					}
 
@@ -82,11 +82,11 @@ class MvcController{
 						imagepng($destino, $ruta);
 
 					}
+					echo '<script>alert("Dentro :'.$ruta.'");</script>';
 
 				}
-				else {
-					$ruta = 'views/img/usuarios/usuario.png';
-				}
+
+				echo '<script>alert("'.$ruta.'");</script>';
 
 				$tabla = "usuarios";
 				$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
