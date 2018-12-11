@@ -2874,7 +2874,7 @@ footer {
 
 /** Contact section start **/
 .contact-section {
-    background: rgba(0, 0, 0, 0.04) url(views/img/house.jpg) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url(../img/house.jpg) top left repeat;
     background-size: cover;
     top: 0;
     width: 100%;
