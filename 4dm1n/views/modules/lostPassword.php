@@ -1,3 +1,8 @@
+<?php
+	if (!isset($_SESSION)){
+        session_start();
+    }
+?>
 <div class="container">
 	<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: url('views/img/home/5.jpg') center center no-repeat; background-size: cover;"></div>
     <div class="card card-login mx-auto mt-5">
@@ -21,7 +26,7 @@
 			<div class="col_full nobottommargin">
 				<br>
 				<button class="btn btn-primary nomargin" id="login-form-submit" name="login-form-submit" value="login">Enviar</button>
-				<a href="index.php" class="fright">Volver al Login</a>
+				<a href="index.php" class="pull-right">Volver al Login</a>
 				
 		</form>
         
