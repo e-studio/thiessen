@@ -25,7 +25,7 @@
 
                             </div>
                             <div class="checkbox">
-                                <a href="forgot-password.html" class="link-not-important pull-right">Olvido su Password</a>
+                                <a href="index.php?action=lostPassword" class="link-not-important pull-right">Olvido su Password</a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group mb-0">

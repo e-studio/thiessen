@@ -1,8 +1,13 @@
+<?php 
+    if (!isset($_SESSION)){
+        session_start();
+    } 
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
     <title>Thiessen - Real Estate | Bienes Raices</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <meta charset="utf-8">
 
     <!-- External CSS libraries -->
@@ -54,9 +59,16 @@
 <div class="page_loader"></div>
 
     <?php
-
-        $modulos = new Enlaces();
-        $modulos -> enlacesController();
+        $_SESSION["lostpass"] = true;
+        if (isset($_SESSION["validar"]) && $_SESSION["validar"] == true){
+            $modulos = new Enlaces();
+            $modulos -> enlacesController();
+        } else if (isset($_SESSION["lostpass"])){
+            $modulos = new Enlaces();
+            $modulos -> enlacesController();
+        } else {
+            include "modules/login.php";
+        }
     ?>
 
 
@@ -93,6 +105,9 @@
 
 <!-- script para subir fotos -->
 <script  src="views/js/fotos.js"></script>
+
+<script  src="views/js/validarIngreso.js"></script>
+
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="views/js/ie10-viewport-bug-workaround.js"></script>

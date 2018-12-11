@@ -14,9 +14,9 @@ class EnlacesModels{
 		   $enlaces == "edita-propiedad" ||
 		   $enlaces == "mis-usuarios" ||
 		   $enlaces == "agrega-usuario" ||
-		   $enlaces == "edita-usuario"
+		   $enlaces == "edita-usuario" ||
 		   //$enlaces == "perfil" ||
-		   //$enlaces == "salir"){
+		   $enlaces == "salir"
 		   ){
 
 			$module = "views/modules/".$enlaces.".php";

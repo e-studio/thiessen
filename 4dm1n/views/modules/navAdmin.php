@@ -28,7 +28,7 @@
                         <a href="index.php?action=edita-usuario" class="nav-link">Mi Perfil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="index.html" class="nav-link">Salir</a>
+                        <a href="index.php?action=salir" class="nav-link">Salir</a>
                     </li>
                 </ul>
                 <!--End Menu para moviles-->
@@ -47,7 +47,7 @@
                                     <a class="dropdown-item" href="messages.html">Messages</a>
                                     <a class="dropdown-item" href="bookings.html">Bookings</a>-->
                                     <a class="dropdown-item" href="index.php?action=edita-usuario">Mi Perfil</a>
-                                    <a class="dropdown-item" href="index.html">Salir</a>
+                                    <a class="dropdown-item" href="index.php?action=salir">Salir</a>
                                 </div>
                             </div>
                         </li>
@@ -93,7 +93,7 @@
                         <h4>Cuenta</h4>
                         <ul>
                             <li><a href="index.php?action=edita-usuario"><i class="flaticon-people"></i>Mi Perfil</a></li>
-                            <li><a href="index.html"><i class="flaticon-logout"></i>Salir</a></li>
+                            <li><a href="index.php?action=salir"><i class="flaticon-logout"></i>Salir</a></li>
                         </ul>
                     </div>
                 </div>

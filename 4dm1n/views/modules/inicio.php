@@ -1,5 +1,7 @@
 <?php
-/*session_start();
+    if (!isset($_SESSION)){
+        session_start();
+    }
 
 if(!$_SESSION["validar"]){
 
@@ -8,7 +10,7 @@ if(!$_SESSION["validar"]){
     exit();
 
 
-}*/
+}
 include "navAdmin.php";
  ?>
 
