@@ -204,6 +204,68 @@ class MvcController{
 	}
 
 
+	#LISTADO DE CLIENTES
+	#------------------------------------
+
+	public function ctrListaUsuarios(){
+
+		$respuesta = Datos::mdlListaUsuarios("usuarios");
+
+		foreach ($respuesta as $row => $item){
+
+		echo '<tr class="responsive-table">
+            <td class="listing-photoo">
+                <img src="'.$item["foto"].'" alt="listing-photo" class="img-fluid" width="120">
+            </td>
+            <td class="title-container">
+                <h2><a href="#">'.$item["nombre"].'</a></h2>
+                <h5 class="d-none d-xl-block d-lg-block d-md-block">'.$item["email"].'</h5>
+                <h6 class="table-property-price">'.$item["telefono"].'</h6>
+            </td>
+            <td class="expire-date">'.$item["titulo"].'</td>
+            <td class="action">
+                <a href="index.php?action=editEmpleados&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
+                <a href="index.php?action=mis-usuarios&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
+            </td>
+        </tr>';
+		}
+
+	}
+
+
+	#BORRAR USUARIO
+	#------------------------------------
+	public function ctrBorrarEmpleado(){
+		if (isset($_GET['idBorrar'])){
+			$datosController = $_GET['idBorrar'];
+			$respuesta = Datos::mdlBorrarEmpleado($datosController,"usuarios");
+			if ($respuesta == "success"){
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡El usuario ha sido borrado correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-usuarios";
+
+						}
+
+					});
+
+
+					</script>';
+			}
+		}
+	}
+
+
 
 	#VISTA DE USUARIOS
 	#------------------------------------

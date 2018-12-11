@@ -42,12 +42,12 @@ class Datos extends Conexion{
 
 
 
-	#VISTA USUARIOS
+	#LISTA USUARIOS
 	#-------------------------------------
 
-	public function vistaUsuariosModel($tabla){
+	public function mdlListaUsuarios($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password, email FROM $tabla");
+		$stmt = Conexion::conectar()->prepare("SELECT id, nombre, password, email, titulo, foto, telefono FROM $tabla");
 		$stmt->execute();
 
 		#fetchAll(): Obtiene todas las filas de un conjunto de resultados asociado al objeto PDOStatement.
@@ -92,6 +92,20 @@ class Datos extends Conexion{
 
 		$stmt = null;
 
+	}
+
+
+	#BORRAR USUARIO
+	#-------------------------------------
+	public function mdlBorrarEmpleado($datosModel,$tabla){
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt -> bindPARAM(":id",$datosModel, PDO::PARAM_INT);
+		if ($stmt->execute()){
+			return "success";
+		} else {
+			return "error";
+		}
+		$stmt -> close();
 	}
 
 
