@@ -231,6 +231,33 @@ class MvcController{
 		}
 
 	}
+	#LISTADO DE PROPIEDADES
+	#------------------------------------
+
+	public function ctrListaPropiedades(){
+
+		$respuesta = Datos::mdlListaPropiedades("propiedades");
+
+		foreach ($respuesta as $row => $item){
+
+		echo '<tr class="responsive-table">
+            <td class="listing-photoo">
+                <img src="'.$item["fotos"].'" alt="listing-photo" class="img-fluid" width="120">
+            </td>
+            <td class="title-container">
+                <h2>'.$item["titulo"].'</h2>
+                <h5 class="d-none d-xl-block d-lg-block d-md-block">'.$item["direccion"].'</h5>
+                <h6 class="table-property-price">'.$item["precio"].'</h6>
+            </td>
+            <td class="expire-date">'.$item["status"].'</td>
+            <td class="action">
+                <a href="index.php?action=edita-propiedad&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
+                <a href="index.php?action=mis-propiedades&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
+            </td>
+        </tr>';
+		}
+
+	}
 
 
 	#BORRAR USUARIO
@@ -254,6 +281,38 @@ class MvcController{
 						if(result.value){
 
 							window.location = "index.php?action=mis-usuarios";
+
+						}
+
+					});
+
+
+					</script>';
+			}
+		}
+	}
+
+	#BORRAR PROPIEDAD
+	#------------------------------------
+	public function ctrBorrarPropiedad(){
+		if (isset($_GET['idBorrar'])){
+			$datosController = $_GET['idBorrar'];
+			$respuesta = Datos::mdlBorrarPropiedad($datosController,"propiedades");
+			if ($respuesta == "success"){
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡Se ha sido borrado correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-propiedades";
 
 						}
 

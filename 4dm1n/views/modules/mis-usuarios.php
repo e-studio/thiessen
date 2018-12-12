@@ -22,7 +22,6 @@ include "navAdmin.php";
               $lista = new MvcController();
               $lista -> ctrListaUsuarios();
               $lista -> ctrBorrarEmpleado();
-              //$ingreso -> borrarEmpleadoController();
             ?>
 
         </tbody>

@@ -57,6 +57,25 @@ class Datos extends Conexion{
 
 	}
 
+
+	#LISTA PROPIEDADES
+	#-------------------------------------
+
+	public function mdlListaPropiedades($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+		$stmt->execute();
+
+		#fetchAll(): Obtiene todas las filas de un conjunto de resultados asociado al objeto PDOStatement.
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
+
+
+
 /*=============================================
 	REGISTRO DE USUARIO
 	=============================================*/
@@ -147,6 +166,20 @@ class Datos extends Conexion{
 	#BORRAR USUARIO
 	#-------------------------------------
 	public function mdlBorrarEmpleado($datosModel,$tabla){
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt -> bindPARAM(":id",$datosModel, PDO::PARAM_INT);
+		if ($stmt->execute()){
+			return "success";
+		} else {
+			return "error";
+		}
+		$stmt -> close();
+	}
+
+
+	#BORRAR PROPIEDAD
+	#-------------------------------------
+	public function mdlBorrarPropiedad($datosModel,$tabla){
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 		$stmt -> bindPARAM(":id",$datosModel, PDO::PARAM_INT);
 		if ($stmt->execute()){
