@@ -179,7 +179,7 @@ class Datos extends Conexion{
 
 	public function mdlBuscaEmpleadoMail($usuario, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT password FROM $tabla WHERE email = :email");
+		$stmt = Conexion::conectar()->prepare("SELECT nombre, password FROM $tabla WHERE email = :email");
 
 		$stmt->bindParam(":email", $usuario, PDO::PARAM_INT);
 

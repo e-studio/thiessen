@@ -40,8 +40,77 @@
 
 						</form>
                         <?php
-                        $mail = Mailer::envia();
-                        echo $mail['password'];
+                        $envia = Mailer::envia();
+
+                        if( $envia == "ok" ){
+								echo '<script>
+
+										swal({
+
+											type: "success",
+											title: "¡Se ha enviado un correo con tus datos de acceso!",
+											showConfirmButton: true,
+											confirmButtonText: "Cerrar"
+
+										}).then(function(result){
+
+											if(result.value){
+
+												window.location = "index.php";
+
+											}
+
+										});
+
+
+										</script>';
+							}
+							else if ($envia == "no existe"){
+								echo '<script>
+
+										swal({
+
+											type: "error",
+											title: "¡No existe un usuario con ese correo, por favor contacte al administrador del sistema!",
+											showConfirmButton: true,
+											confirmButtonText: "Cerrar"
+
+										}).then(function(result){
+
+											if(result.value){
+
+												//window.location = "index.php";
+
+											}
+
+										});
+
+
+										</script>';
+							}
+							else if ($envia == "error al enviar"){
+								echo '<script>
+
+										swal({
+
+											type: "error",
+											title: "¡El sistema no pudo enviar el correo, intente mas tarde!",
+											showConfirmButton: true,
+											confirmButtonText: "Cerrar"
+
+										}).then(function(result){
+
+											if(result.value){
+
+												window.location = "index.php";
+
+											}
+
+										});
+
+
+										</script>';
+							}
 
 
                         ?>
