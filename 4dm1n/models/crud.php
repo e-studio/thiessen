@@ -95,6 +95,55 @@ class Datos extends Conexion{
 	}
 
 
+	/*=============================================
+	ACTUALIZA USUARIO
+	=============================================*/
+
+	static public function mdlActualizaUsuario($datos, $tabla){
+		// if ($datos["password"]==""){
+
+		// 	$instruccion = "UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id";
+
+		// }
+		// else{
+
+		// 	$instruccion = "UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, password=:password, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id";
+		// }
+		// //return $instruccion;
+
+		 $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, password=:password, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id");
+
+		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":personal", $datos["personal"], PDO::PARAM_STR);
+		$stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":ultimoLogin", $datos["ultimoLogin"], PDO::PARAM_STR);
+		$stmt->bindParam(":fechaNac", $datos["fechaNac"], PDO::PARAM_STR);
+		$stmt->bindParam(":sociales", $datos["sociales"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
+
+	}
+
+
 	#BORRAR USUARIO
 	#-------------------------------------
 	public function mdlBorrarEmpleado($datosModel,$tabla){
@@ -106,6 +155,38 @@ class Datos extends Conexion{
 			return "error";
 		}
 		$stmt -> close();
+	}
+
+
+	#BUSCA UN USUARIO
+	#-------------------------------------
+
+	public function mdlBuscaEmpleado($usuario, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id = :id");
+
+		$stmt->bindParam(":id", $usuario, PDO::PARAM_INT);
+
+		$stmt -> execute();
+		return $stmt -> fetch();
+
+		$stmt->close();
+	}
+
+
+	#BUSCA UN USUARIO POR MAIL
+	#-------------------------------------
+
+	public function mdlBuscaEmpleadoMail($usuario, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT password FROM $tabla WHERE email = :email");
+
+		$stmt->bindParam(":email", $usuario, PDO::PARAM_INT);
+
+		$stmt -> execute();
+		return $stmt -> fetch();
+
+		$stmt->close();
 	}
 
 

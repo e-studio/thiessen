@@ -1,7 +1,7 @@
-<?php 
+<?php
     if (!isset($_SESSION)){
         session_start();
-    } 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -56,7 +56,7 @@
 
 </head>
 <body>
-<div class="page_loader"></div>
+<!-- <div class="page_loader"></div> -->
 
     <?php
         $_SESSION["lostpass"] = true;

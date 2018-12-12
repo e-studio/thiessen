@@ -2,7 +2,7 @@
 <header class="main-header header-2 fixed-header">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo pad-0" href="index.html">
+            <a class="navbar-brand logo pad-0" href="index.php?action=inicio">
                 <img src="views/img/logos/black-logo.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
                         <a href="index.php?action=agrega-propiedad" class="nav-link">Agregar Propiedad</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="index.php?action=edita-usuario" class="nav-link">Mi Perfil</a>
+                        <a href="index.php?action=edita-usuario&idEditar=<?php echo $_SESSION['id']; ?>" class="nav-link">Mi Perfil</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="index.php?action=salir" class="nav-link">Salir</a>
@@ -39,14 +39,14 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="" alt="avatar">
+                                    <img src="<?php echo $_SESSION['foto']; ?>" alt="avatar">
                                     Mi Cuenta
                                 </a>
                                 <div class="dropdown-menu">
                                     <!--<a class="dropdown-item" href="dashboard.html">Dashboard</a>
                                     <a class="dropdown-item" href="messages.html">Messages</a>
                                     <a class="dropdown-item" href="bookings.html">Bookings</a>-->
-                                    <a class="dropdown-item" href="index.php?action=edita-usuario">Mi Perfil</a>
+                                    <a class="dropdown-item" href="index.php?action=edita-usuario&idEditar=<?php echo $_SESSION['id']; ?>">Mi Perfil</a>
                                     <a class="dropdown-item" href="index.php?action=salir">Salir</a>
                                 </div>
                             </div>

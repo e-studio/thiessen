@@ -86,7 +86,7 @@ class MvcController{
 
 				}
 
-				echo '<script>alert("'.$ruta.'");</script>';
+				//echo '<script>alert("'.$ruta.'");</script>';
 
 				$tabla = "usuarios";
 				$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
@@ -170,41 +170,41 @@ class MvcController{
 
 	}
 
-	#REGISTRO DE USUARIOS
-	#------------------------------------
-	public function registroUsuarioController(){
+	// #REGISTRO DE USUARIOS
+	// #------------------------------------
+	// public function registroUsuarioController(){
 
-		if(isset($_POST["usuario"])){
+	// 	if(isset($_POST["usuario"])){
 
-			$datosController = array( "nombre"=>$_POST["nombre"],
-									  "usuario"=>$_POST["usuario"],
-								      "password"=>$_POST["password"],
-								      "email"=>$_POST["email"],
-								      "sistema"=>$_POST["sistema"],
-								      "rol"=>$_POST["rol"],
-								      "activo"=>$_POST["activo"]);
+	// 		$datosController = array( "nombre"=>$_POST["nombre"],
+	// 								  "usuario"=>$_POST["usuario"],
+	// 							      "password"=>$_POST["password"],
+	// 							      "email"=>$_POST["email"],
+	// 							      "sistema"=>$_POST["sistema"],
+	// 							      "rol"=>$_POST["rol"],
+	// 							      "activo"=>$_POST["activo"]);
 
-			$respuesta = Datos::registroUsuarioModel($datosController, "usuarios");
+	// 		$respuesta = Datos::registroUsuarioModel($datosController, "usuarios");
 
-			echo $respuesta;
+	// 		echo $respuesta;
 
-			if($respuesta == "success"){
+	// 		if($respuesta == "success"){
 
-				//header("location:index.php?action=ok");
+	// 			//header("location:index.php?action=ok");
 
-			}
+	// 		}
 
-			else{
+	// 		else{
 
-				//header("location:index.php");
-			}
+	// 			//header("location:index.php");
+	// 		}
 
-		}
+	// 	}
 
-	}
+	// }
 
 
-	#LISTADO DE CLIENTES
+	#LISTADO DE USUARIOS
 	#------------------------------------
 
 	public function ctrListaUsuarios(){
@@ -224,7 +224,7 @@ class MvcController{
             </td>
             <td class="expire-date">'.$item["titulo"].'</td>
             <td class="action">
-                <a href="index.php?action=editEmpleados&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
+                <a href="index.php?action=edita-usuario&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
                 <a href="index.php?action=mis-usuarios&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
             </td>
         </tr>';
@@ -265,29 +265,175 @@ class MvcController{
 		}
 	}
 
-
-
-	#VISTA DE USUARIOS
+# ACTUALIZA USUARIO
 	#------------------------------------
 
-	public function vistaUsuariosController(){
+	public function ctlActualizaUsuario(){
+		if (isset($_REQUEST['actualiza'])){
 
-		$respuesta = Datos::vistaUsuariosModel("usuarios");
+			$ruta = $_POST["foto"];
 
-		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
+			if(isset($_FILES["nuevaFoto"]["tmp_name"])){
 
-		foreach($respuesta as $row => $item){
-		echo'<tr>
-				<td>'.$item["usuario"].'</td>
-				<td>'.$item["password"].'</td>
-				<td>'.$item["email"].'</td>
-				<td><a href="index.php?action=editar&id='.$item["id"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
-			</tr>';
+
+				list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+				$nuevoAncho = 500;
+				$nuevoAlto = 500;
+
+				/*=============================================
+				CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+				=============================================*/
+
+				$directorio = "views/img/usuarios";
+
+				if (!file_exists($directorio)) {     // si el directorio no existe lo creamos
+					mkdir($directorio, 0755);
+				}
+
+				/*=============================================
+				DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+				=============================================*/
+
+				if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+					/*=============================================
+					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+					=============================================*/
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta = "views/img/usuarios/".$aleatorio.".jpg";
+
+					$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagejpeg($destino, $ruta);
+
+				}
+
+				if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+					/*=============================================
+					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+					=============================================*/
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta = "views/img/usuarios/".$aleatorio.".png";
+
+					$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagepng($destino, $ruta);
+
+				}
+				//echo '<script>alert("Dentro :'.$ruta.'");</script>';
+
+			}
+
+			$tabla = "usuarios";
+			$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
+
+			//$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+			$datos = array("id" => $_POST["id"],
+						   "nombre" => $_POST["name"],
+						   "telefono" => $_POST["phone"],
+				           "email" => $_POST["email"],
+				           "password" => $_POST["new-password"],
+				           //"password" => $encriptar,
+				           "personal" => $_POST["personal"],
+				           "titulo" => $_POST["title"],
+				           "perfil" => $_POST["profile"],
+				           "foto"=>$ruta,
+				           "estado" => "1",
+				           "ultimoLogin" => 'NULL',
+				           "fechaNac" => $_POST["fechaNac"],
+				           "sociales" => json_encode($socials));
+
+			$respuesta = Datos::mdlActualizaUsuario($datos, $tabla);
+
+			//echo "<script type='text/javascript'>alert('$respuesta'); window.location.href='index.php?action=mis-usuarios'</script>";
+
+			if ($respuesta=="ok"){
+
+				echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡El usuario se actualizó correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-usuarios";
+
+						}
+
+					});
+
+
+					</script>';
+			}
+			else{
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "Error al actualizar",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-usuarios";
+
+						}
+
+					});
+
+
+					</script>';
+			}
 
 		}
 
 	}
+
+	// #VISTA DE USUARIOS
+	// #------------------------------------
+
+	// public function vistaUsuariosController(){
+
+	// 	$respuesta = Datos::vistaUsuariosModel("usuarios");
+
+	// 	#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
+
+	// 	foreach($respuesta as $row => $item){
+	// 	echo'<tr>
+	// 			<td>'.$item["usuario"].'</td>
+	// 			<td>'.$item["password"].'</td>
+	// 			<td>'.$item["email"].'</td>
+	// 			<td><a href="index.php?action=editar&id='.$item["id"].'"><button>Editar</button></a></td>
+	// 			<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
+	// 		</tr>';
+
+	// 	}
+
+	// }
 
 
 

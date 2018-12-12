@@ -1,17 +1,22 @@
 <?php
-// session_start();
+//session_start();
+if(!$_SESSION["validar"]){
 
-// if(!$_SESSION["validar"]){
+    header("location:index.php");
 
-//     header("location:index.php");
+    exit();
+}
 
-//     exit();
+$usuario = $_REQUEST['idEditar'];
+$busqueda = Datos::mdlBuscaEmpleado($usuario, "usuarios");
+
+$sociales = json_decode($busqueda["sociales"], true);
 
 
-// }
 include "navAdmin.php";
  ?>
-<div class="col-sm-12 col-md-6"><h4>Editar Mis Datos</h4></div>
+<form action="" method="POST" enctype="multipart/form-data">
+<div class="col-sm-12 col-md-6"><h4>Editar datos de usuario</h4></div>
 <div class="dashboard-list">
     <h3 class="heading">Datos Personales</h3>
     <div class="dashboard-message contact-2 bdr clearfix">
@@ -19,50 +24,71 @@ include "navAdmin.php";
             <div class="col-lg-3 col-md-3">
                 <!-- Edit profile photo -->
                 <div class="edit-profile-photo">
-                    <img src="http://placehold.it/198x165" alt="profile-photo" class="img-fluid">
+                    <img src="<?php echo $busqueda['foto'];?>" alt="profile-photo" class="img-fluid previsualizar">
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>
-                            <input type="file" class="upload">
+                            <input type="file" name="nuevaFoto" class="upload">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
-                <form action="#" method="GET" enctype="multipart/form-data">
+
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group name">
-                                <label>Your Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="John Deo">
+                                <input required type="text" name="id" value="<?php echo $usuario; ?>" hidden>
+                                <input required type="text" name="foto" value="<?php echo $busqueda['foto']; ?>" hidden>
+                                <label>Nombre</label>
+                                <input required type="text" name="name" value="<?php echo $busqueda['nombre'];?>" class="form-control" placeholder="Nombre completo">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group email">
-                                <label>Your Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Your Title">
+                                <label>Puesto</label>
+                                <input type="text" name="title" value="<?php echo $busqueda['titulo'];?>" class="form-control" placeholder="Puesto en la empresa">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group subject">
-                                <label>Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone">
+                                <label>Telefono</label>
+                                <input type="text" name="phone" value="<?php echo $busqueda['telefono'];?>" class="form-control" placeholder="Telefono de contacto">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input required type="email" name="email" value="<?php echo $busqueda['email'];?>" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group number">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" name="fechaNac" value="<?php echo $busqueda['fechaNac'];?>" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group number">
+                                <label>Perfil de Usuario <?php echo $busqueda['perfil']; ?></label>
+                                <select name="profile" class="form-control">
+                              <?php
+                                if ($busqueda['perfil']=="usuairo"){echo '<option value="usuario" selected>Usuario</option>';}
+                                else {echo '<option value="usuario">Usuario</option>';}
+                                if ($busqueda['perfil']=="administrador") {echo '<option value="administrador" selected>Administrador</option>';}
+                                else {echo '<option value="Administrador">Administrador</option>';}
+                              ?>
+
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group message">
-                                <label>Personal info</label>
-                                <textarea class="form-control" name="message" placeholder="Personal info"></textarea>
+                                <label>Información Personal</label>
+                                <textarea class="form-control" name="personal" value="<?php echo $busqueda['personal'];?>" placeholder="ej. Activo, gusta de la buena musica, etc"></textarea>
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -70,80 +96,66 @@ include "navAdmin.php";
 <div class="row">
     <div class="col-md-6">
         <div class="dashboard-list">
-            <h3 class="heading">Change Password</h3>
+            <h3 class="heading">Actualiza tu password</h3>
             <div class="dashboard-message contact-2">
-                <form action="#" method="GET" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="form-group name">
-                                <label>Current Password</label>
-                                <input type="password" name="current-password" class="form-control" placeholder="Current Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
                             <div class="form-group email">
-                                <label>New Password</label>
-                                <input type="password" name="new-password" class="form-control" placeholder="New Password">
+                                <label>Password</label>
+                                <input  type="password" name="new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Nuevo Password">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
-                                <label>Confirm New Password</label>
-                                <input type="password" name="confirm-new-password" class="form-control" placeholder="Confirm New Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="send-btn">
-                                <button type="submit" class="btn btn-md button-theme">Change Password</button>
+                                <label>Confirma Password</label>
+                                <input type="password" name="confirm-new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Confirme Password">
                             </div>
                         </div>
                     </div>
-                </form>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="send-btn">
+                <button type="submit" class="btn btn-md button-theme" name="actualiza">Actualizar Datos</button>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="dashboard-list">
-            <h3 class="heading">Socials</h3>
+            <h3 class="heading">Redes Sociales</h3>
             <div class="dashboard-message contact-2">
-                <form action="#" method="GET" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group name">
                                 <label>Facebook</label>
-                                <input type="text" name="facebook" class="form-control" placeholder="https://www.facebook.com">
+                                <input type="text" name="facebook" value="<?php echo $sociales['Facebook'];?>" class="form-control" placeholder="https://www.facebook.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group email">
                                 <label>Twitter</label>
-                                <input type="text" name="twitter" class="form-control" placeholder="https://twitter.com">
+                                <input type="text" name="twitter" value="<?php echo $sociales['Twitter'];?>" class="form-control" placeholder="https://twitter.com">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
-                                <label>Vkontakte</label>
-                                <input type="text" name="vkontakte" class="form-control" placeholder="vk.com">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group number">
-                                <label>Whatsapp</label>
-                                <input type="email" name="whatsapp" class="form-control" placeholder="https://www.whatsapp.com">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="send-btn">
-                                <button type="submit" class="btn btn-md button-theme">Send Changes</button>
+                                <label>LinkedIn</label>
+                                <input type="text" name="linkedin" value="<?php echo $sociales['LinkedIn'];?>" class="form-control" placeholder="linkedin.com">
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
+
     </div>
-</div>
+</div> <!-- row -->
+</form>
 
 <?php
+
+$actualiza = new MvcController();
+$actualiza -> ctlActualizaUsuario();
+
+
 include "footer.php";
  ?>

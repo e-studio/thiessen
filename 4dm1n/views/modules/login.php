@@ -32,14 +32,14 @@
                                 <button type="submit" class="btn-md button-theme btn-block">login</button>
                             </div>
 
-                            <?php
 
-                            $ingreso = new Ingreso();
-                            $ingreso -> ingresoController();
-
-                          ?>
                         </form>
+                        <?php
 
+                        $ingreso = new Ingreso();
+                        $ingreso -> ingresoController();
+
+                        ?>
                     </div>
 
                 </div>
