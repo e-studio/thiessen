@@ -23,7 +23,7 @@
 
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="views/css/style.css">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="views/css/skins/default.css">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="views/css/skins/green.css">
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="views/img/favicon.ico" type="image/x-icon" >
@@ -51,9 +51,7 @@
 
 		<?php include "modules/encabezado.php"; ?>
 
-		<?php include "modules/slide.php"; ?>
-
-		<?php include "modules/busquedas.php"; ?>
+		<?php include "modules/slider.php"; ?>
 
 		<?php include "modules/recientes.php"; ?>
 
