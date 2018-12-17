@@ -71,17 +71,6 @@
         }
     ?>
 
-
-
-<!-- Full Page Search
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="index.html#">
-        <input type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-sm button-theme">Search</button>
-    </form>
-</div>-->
-
 <script src="views/js/jquery-2.2.0.min.js"></script>
 <script src="views/js/popper.min.js"></script>
 <script src="views/js/bootstrap.min.js"></script>

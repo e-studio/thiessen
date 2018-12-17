@@ -6,69 +6,50 @@
                 <div class="footer-item clearfix">
                     <img src="views/img/logos/logo.png" alt="logo" class="f-logo">
                     <div class="text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.</p>
+                        <p>Agregando Valor.</p>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-item">
-                    <h4>Contact Us</h4>
+                    <h4>Informaci&oacute;n de contacto</h4>
                     <div class="f-border"></div>
                     <ul class="contact-info">
                         <li>
-                            <i class="flaticon-pin"></i>20/F Green Road, Dhanmondi, Dhaka
+                            <i class="flaticon-pin"></i>km 34.5 Carr. Cuauht&eacute;moc - Alvaro Obreg&oacute;n, Cd. Cuauht&eacute;moc, Chih.
                         </li>
                         <li>
-                            <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">info@thiessen.com.mx</a>
                         </li>
                         <li>
-                            <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">+0477 85X6 552</a>
+                            <i class="flaticon-phone"></i><a href="tel:+55-625-122-8227">+52 625 122 8227</a>
                         </li>
                         <li>
-                            <i class="flaticon-fax"></i>+0477 85X6 552
+                            <i class="flaticon-fax"></i><a href="tel:+55-625-122-8289">+52 625 122 8289</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-item">
                     <h4>
-                        Useful Links
+                        Links de la pagina
                     </h4>
                     <div class="f-border"></div>
                     <ul class="links">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="index.php">Inicio</a>
                         </li>
                         <li>
-                            <a href="about.html">About Us</a>
+                            <a href="propiedades.php">Propiedades</a>
                         </li>
                         <li>
-                            <a href="services.html">Services</a>
+                            <a href="agentes.php">Agentes</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="dashboard.html">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="properties-details.html">Properties Details</a>
+                            <a href="contacto.php">Contacto</a>
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>Subscribe</h4>
-                    <div class="f-border"></div>
-                    <div class="Subscribe-box">
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        <form class="form-inline" action="#" method="GET">
-                            <input type="text" class="form-control mb-sm-0" id="inlineFormInputName3" placeholder="Email Address">
-                            <button type="submit" class="btn"><i class="fa fa-paper-plane"></i></button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -81,15 +62,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <p class="copy">© 2018 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                <p class="copy">© 2019 <a href="http://www.thiessen.com.mx">Thiessen Bienes Raices.</a> Todos los derechos reservados.</p>
             </div>
             <div class="col-lg-4 col-md-4">
                 <ul class="social-list clearfix">
-                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://www.facebook.com/Thiessen-Real-Estate-471333843273663/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/realthiessen/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>

@@ -1,13 +1,21 @@
 <!-- Banner start -->
+<?php
+// desordena los numero del 1 al 6 y los pone en un array $rand para mostrar diferentes fotos en el banner
+// cada vez que se accese la pagina
+$rand = range(1, 6);
+shuffle($rand);
+?>
+
+
 <div class="banner banner" id="banner">
     <div id="bannerCarousole" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item banner-max-height active">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house1.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[0]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-center">
-                            <h1>Find Your Property</h1>
+                            <h1>Tu futuro hogar esta aqu&iacute;</h1>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             </p>
@@ -18,7 +26,7 @@
                 </div>
             </div>
             <div class="carousel-item banner-max-height">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house2.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[1]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-right">
@@ -33,7 +41,7 @@
                 </div>
             </div>
             <div class="carousel-item banner-max-height">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house3.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[2]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-left">
@@ -153,4 +161,8 @@
         </div>
     </div>
 </div>
-<!-- Banner end
+<!-- Banner end -->
+
+    <?php
+
+?>

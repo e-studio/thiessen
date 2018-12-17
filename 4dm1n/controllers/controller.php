@@ -82,7 +82,7 @@ class MvcController{
 						imagepng($destino, $ruta);
 
 					}
-					echo '<script>alert("Dentro :'.$ruta.'");</script>';
+					//echo '<script>alert("Dentro :'.$ruta.'");</script>';
 
 				}
 

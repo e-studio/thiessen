@@ -85,7 +85,7 @@ include "navAdmin.php";
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group message">
                                 <label>Información Personal</label>
-                                <textarea class="form-control" name="personal" value="<?php echo $busqueda['personal'];?>" placeholder="ej. Activo, gusta de la buena musica, etc"></textarea>
+                                <textarea class="form-control" name="personal"placeholder="ej. Activo, gusta de la buena musica, etc"><?php echo $busqueda['personal'];?></textarea>
                             </div>
                         </div>
                     </div>

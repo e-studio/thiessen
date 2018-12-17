@@ -3,8 +3,7 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Agentes de Ventas</h1>
-            <p>Este es nuestro equipo</p>
+            <h1>Agentes Destacados</h1>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area">
@@ -12,7 +11,7 @@
 
                 <?php
                     $propiedades = new agentes();
-                    $propiedades -> listaAgentes();
+                    $propiedades -> slideAgentes();
                 ?>
 
             </div>

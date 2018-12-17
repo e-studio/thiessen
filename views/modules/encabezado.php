@@ -14,13 +14,13 @@
                         <a class="nav-link dropdown-toggle" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="index.html">Propiedades</a>
+                        <a class="nav-link dropdown-toggle" href="propiedades.php">Propiedades</a>
                     </li>
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="index.html">Agentes</a>
+                        <a class="nav-link dropdown-toggle" href="agentes.php">Agentes</a>
                     </li>
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="index.html">Contacto</a>
+                        <a class="nav-link dropdown-toggle" href="contacto.php">Contacto</a>
                     </li>
                 </ul>
             </div>
