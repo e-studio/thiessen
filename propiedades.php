@@ -55,57 +55,7 @@
 	                $propiedades -> todasPropiedades();
 	            ?>
 
-                <div class="property-box-2" >
-                    <div class="row">
-                        <div class="col-lg-4 col-md-5 col-pad">
-                            <div class="property-thumbnail">
-                                <a href="properties-details.html" class="property-img">
-                                    <img src="http://placehold.it/300x253" alt="properties" class="img-fluid">
-                                    <div class="listing-badges">
-                                        <span class="featured">Featured</span>
-                                    </div>
-                                    <div class="price-box"><span>$850.00</span> Per month</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-7 col-pad">
-                            <div class="detail">
-                                <div class="hdg">
-                                    <h3 class="title">
-                                        <a href="properties-details.html">Relaxing Apartment</a>
-                                    </h3>
-                                    <h5 class="location">
-                                        <a href="properties-details.html">
-                                            <i class="flaticon-pin"></i>20-21 Kathal St. Tampa City, FL
-                                        </a>
-                                    </h5>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <span>Area</span>3600 Sqft
-                                    </li>
-                                    <li>
-                                        <span>Beds</span> 3
-                                    </li>
-                                    <li>
-                                        <span>Baths</span> 2
-                                    </li>
-                                    <li>
-                                        <span>Garage</span> 1
-                                    </li>
-                                </ul>
-                                <div class="footer">
-                                    <a href="#" tabindex="0">
-                                        <i class="flaticon-people"></i> Jhon Doe
-                                    </a>
-                                    <span>
-                                          <i class="flaticon-calendar"></i>5 Days ago
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- row -->
-                </div> 	<!-- property-box-2 -->
+
 
 
 
@@ -131,7 +81,7 @@
     </div>
 </div>
 <!-- Properties section body end -->
-            <!-- ********************************************************************************************************** -->
+<!-- ********************************************************************************************************** -->
 
         </div>
     </div>

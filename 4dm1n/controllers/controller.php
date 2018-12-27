@@ -2,8 +2,6 @@
 
 class MvcController{
 
-
-
 	/*=============================================
 	REGISTRO DE USUARIO
 	=============================================*/
@@ -82,11 +80,8 @@ class MvcController{
 						imagepng($destino, $ruta);
 
 					}
-					//echo '<script>alert("Dentro :'.$ruta.'");</script>';
 
 				}
-
-				//echo '<script>alert("'.$ruta.'");</script>';
 
 				$tabla = "usuarios";
 				$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
@@ -170,38 +165,6 @@ class MvcController{
 
 	}
 
-	// #REGISTRO DE USUARIOS
-	// #------------------------------------
-	// public function registroUsuarioController(){
-
-	// 	if(isset($_POST["usuario"])){
-
-	// 		$datosController = array( "nombre"=>$_POST["nombre"],
-	// 								  "usuario"=>$_POST["usuario"],
-	// 							      "password"=>$_POST["password"],
-	// 							      "email"=>$_POST["email"],
-	// 							      "sistema"=>$_POST["sistema"],
-	// 							      "rol"=>$_POST["rol"],
-	// 							      "activo"=>$_POST["activo"]);
-
-	// 		$respuesta = Datos::registroUsuarioModel($datosController, "usuarios");
-
-	// 		echo $respuesta;
-
-	// 		if($respuesta == "success"){
-
-	// 			//header("location:index.php?action=ok");
-
-	// 		}
-
-	// 		else{
-
-	// 			//header("location:index.php");
-	// 		}
-
-	// 	}
-
-	// }
 
 
 	#LISTADO DE USUARIOS
@@ -231,6 +194,10 @@ class MvcController{
 		}
 
 	}
+
+
+
+
 	#LISTADO DE PROPIEDADES
 	#------------------------------------
 
@@ -245,9 +212,10 @@ class MvcController{
                 <img src="'.$item["fotos"].'" alt="listing-photo" class="img-fluid" width="120">
             </td>
             <td class="title-container">
+				ID: '.$item["id"].'<br>
                 <h2>'.$item["titulo"].'</h2>
                 <h5 class="d-none d-xl-block d-lg-block d-md-block">'.$item["direccion"].'</h5>
-                <h6 class="table-property-price">'.$item["precio"].'</h6>
+                <h6 class="table-property-price">'.number_format($item["precio"]).'</h6>
             </td>
             <td class="expire-date">'.$item["status"].'</td>
             <td class="action">
@@ -472,29 +440,194 @@ class MvcController{
 
 	}
 
-	// #VISTA DE USUARIOS
-	// #------------------------------------
 
-	// public function vistaUsuariosController(){
+	/*=============================================
+	REGISTRO DE PROPIEDAD NUEVA
+	=============================================*/
 
-	// 	$respuesta = Datos::vistaUsuariosModel("usuarios");
-
-	// 	#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
-
-	// 	foreach($respuesta as $row => $item){
-	// 	echo'<tr>
-	// 			<td>'.$item["usuario"].'</td>
-	// 			<td>'.$item["password"].'</td>
-	// 			<td>'.$item["email"].'</td>
-	// 			<td><a href="index.php?action=editar&id='.$item["id"].'"><button>Editar</button></a></td>
-	// 			<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
-	// 		</tr>';
-
-	// 	}
-
-	// }
+	public function ctrCrearPropiedad(){
 
 
+	} // funcion
+
+
+
+
+	/*=============================================
+	ACTUALIZA DATOS DE PROPIEDAD
+	=============================================*/
+
+	public function ctrActualizaPropiedad(){
+
+		if(isset($_POST["actualiza"])){
+
+
+				/*=============================================
+				VALIDAR IMAGEN DE LA PROPIEDAD
+				=============================================*/
+
+				//$ruta = "views/img/propiedades/house-icon.png";
+				$ruta = $_POST["nuevaFoto"];
+
+				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+					//echo '<script>console_log("Si se puso foto :'.$ruta.'");</script>';
+
+
+					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+					$nuevoAncho = 500;
+					$nuevoAlto = 500;
+
+					/*=============================================
+					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+					=============================================*/
+
+					$directorio = "views/img/propiedades";
+
+					if (!file_exists($directorio)) {     // si el directorio no existe lo creamos
+						mkdir($directorio, 0755);
+					}
+
+					/*=============================================
+					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================*/
+					console_log($_FILES["nuevaFoto"]["type"]);
+
+					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+						//echo '<script>console_log("es JPG :'.$ruta.'");</script>';
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "views/img/propiedades/".$aleatorio.".jpg";
+
+						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagejpeg($destino, $ruta);
+
+					}
+
+					if($_FILES["nuevaFoto"]["type"] == "image/png"){
+						//echo '<script>console_log("Es PNG :'.$ruta.'");</script>';
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "views/img/propiedades/".$aleatorio.".png";
+
+						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagepng($destino, $ruta);
+
+					}
+
+
+				}
+
+
+			$tabla = "propiedades";
+
+				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
+				//echo '<script>alert("Foto :'.$ruta.'");</script>';
+
+				$datos = array("id" => $_POST["id"],
+							   "nombre" => $_POST["nombre"],
+							   "status" => $_POST["status"],
+					           "precio" => $_POST["precio"],
+					           "mtsTerreno" => $_POST["mtsTerreno"],
+					           "mtsConstruccion" => $_POST["mtsConstruccion"],
+					           //"password" => $encriptar,
+					           "habitaciones" => $_POST["habitaciones"],
+					           "banos" => $_POST["banos"],
+					           "categoria" => $_POST["categoria"],
+					           "direccion" => $_POST["direccion"],
+					           "ciudad" => $_POST["ciudad"],
+					           "estado" => $_POST["estado"],
+					           "CP" => $_POST["CP"],
+					           "detalles" => $_POST["detalles"],
+					           "caract" => json_encode($caract),
+					           "agenteID" => $_POST["agenteID"],
+
+					           "foto"=>$ruta,
+					           "estado" => $_POST["estado"],
+					           //"fechaNac" => $_POST["fechaNac"],
+					           "caract" => json_encode($caract));
+
+				var_dump($datos);
+
+				$respuesta = Datos::mdlActualizarPropiedad($tabla, $datos);
+
+
+			// 	if($respuesta == "ok"){
+
+			// 		echo '<script>
+
+			// 		swal({
+
+			// 			type: "success",
+			// 			title: "¡Se ha guardado la informacion correctamente!",
+			// 			showConfirmButton: true,
+			// 			confirmButtonText: "Cerrar"
+
+			// 		}).then(function(result){
+
+			// 			if(result.value){
+
+			// 				window.location = "index.php?action=mis-propiedades";
+
+			// 			}
+
+			// 		});
+
+
+			// 		</script>';
+
+
+			// 	}
+
+
+			// else{
+
+			// 	echo '<script>
+
+			// 		swal({
+
+			// 			type: "error",
+			// 			title: "¡No se pudo guardar la informacion!",
+			// 			showConfirmButton: true,
+			// 			confirmButtonText: "Cerrar"
+
+			// 		}).then(function(result){
+
+			// 			if(result.value){
+
+			// 				window.location = "index.php?action=mis-propiedades";
+
+			// 			}
+
+			// 		});
+
+
+			// 	</script>';
+
+			// }
+
+
+		}
+	}
 
 
 }

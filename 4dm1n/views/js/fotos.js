@@ -6,7 +6,10 @@
 
 $(".upload").change(function(){
 	var imagen = this.files[0];
-	//console.log(imagen);
+
+	console.log(imagen);
+
+
 	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
 		$(".upload").val("");
 		swal({

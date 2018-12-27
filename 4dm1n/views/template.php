@@ -52,6 +52,14 @@
     <!-- SweetAlert 2 -->
     <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
 
+<!--    <!~~ DropZone Images ~~>
+    <!~~ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> ~~>
+    <link rel="stylesheet" href="views/css/styles.css">
+    <!~~ <script src="https://code.jquery.com/jquery-3.2.1.js"></script> ~~>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="views/js/jquery-ui.min.js"></script>-->
+
 
 
 </head>

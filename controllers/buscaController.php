@@ -2,6 +2,191 @@
 
 class propiedades{
 
+    public function detallePropiedad($propiedad){
+        $item = buscaModels::buscaDetallePropiedad($propiedad, "propiedades");
+
+        $caract = json_decode($item["caracteristicas"], true);
+        $social = json_decode($item["sociales"], true);
+
+        echo '<!-- Properties details page start -->
+<div class="properties-details-page content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Heading properties 3 start -->
+                <div class="heading-properties-3">
+                    <h1>'.$item["titulo"].'</h1>
+                    <div class="mb-30"><span class="property-price">$'.number_format($item["precio"]).'</span> <span class="rent">'.$item["status"].'</span> <span class="location"><i class="flaticon-pin"></i>'.$item["direccion"].', '.$item["ciudad"].', '.$item["estado"].' </span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <!-- main slider carousel items -->
+                <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-40">
+                    <div class="carousel-inner">
+                        <div class="active item carousel-item" data-slide-number="0">
+                            <img src="4dm1n/'.$item["fotos"].'" class="img-fluid" alt="slider-properties">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="1">
+                            <img src="http://placehold.it/730x486" class="img-fluid" alt="slider-properties">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="2">
+                            <img src="http://placehold.it/730x486" class="img-fluid" alt="slider-properties">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="4">
+                            <img src="http://placehold.it/730x486" class="img-fluid" alt="slider-properties">
+                        </div>
+                        <div class="item carousel-item" data-slide-number="5">
+                            <img src="http://placehold.it/730x486" class="img-fluid" alt="slider-properties">
+                        </div>
+
+                        <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                        <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+                    </div>
+                    <!-- main slider carousel nav controls -->
+                    <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
+                        <li class="list-inline-item active">
+                            <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#propertiesDetailsSlider">
+                                <img src="4dm1n/'.$item["fotos"].'" class="img-fluid" alt="properties-small">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-1" data-slide-to="1" data-target="#propertiesDetailsSlider">
+                                <img src="http://placehold.it/146x97" class="img-fluid" alt="properties-small">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-2" data-slide-to="2" data-target="#propertiesDetailsSlider">
+                                <img src="http://placehold.it/146x97" class="img-fluid" alt="properties-small">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-3" data-slide-to="3" data-target="#propertiesDetailsSlider">
+                                <img src="http://placehold.it/146x97" class="img-fluid" alt="properties-small">
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a id="carousel-selector-4" data-slide-to="4" data-target="#propertiesDetailsSlider">
+                                <img src="http://placehold.it/146x97" class="img-fluid" alt="properties-small">
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- main slider carousel items -->
+                </div>
+
+                <!-- Properties description start -->
+                <div class="properties-description mb-40">
+                    <h3 class="heading-2">
+                        Descripci&oacute;n
+                    </h3>
+                    <p>'.$item["detalles"].'</p>
+                </div>
+
+
+                <!-- Properties amenities start -->';
+
+                $i =0;
+                foreach ($caract as $key => $value){
+                    if($value != null ) $i++;
+                }
+
+                if ($i>0){
+
+                echo'<div class="properties-amenities mb-40">
+                    <h3 class="heading-2">
+                        Caracteristicas Adicionales
+                    </h3>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <ul class="amenities">';
+
+                            foreach ($caract as $key => $value){
+                                    if($value != null ){
+                                    echo '<li>
+                                            <i class="fa fa-check"></i>'.$key.'
+                                        </li>';
+                                    }
+                                };
+
+                            echo '
+                            </ul>
+                        </div>
+                    </div>
+                </div>';
+                } // if $i>0
+
+                echo'<!-- Floor plans start -->
+                <div class="floor-plans mb-50">
+                    <h3 class="heading-2">Distribuci&oacute;n</h3>
+                    <table>
+                        <tbody><tr>
+                            <td><strong>Terreno</strong></td>
+                            <td><strong>Construcci&oacute;n</strong></td>
+                            <td><strong>Habitaciones</strong></td>
+                            <td><strong>Ba&ntilde;os</strong></td>
+
+                        </tr>
+                        <tr>
+                            <td>'.$item["areaTerreno"].'</td>
+                            <td>'.$item["areaConstruccion"].'</td>
+                            <td>'.$item["habitaciones"].'</td>
+                            <td>'.$item["banos"].'</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <img src="4dm1n/'.$item["fotos"].'" alt="floor-plans" class="img-fluid">
+                </div>
+             </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar-right">
+                    <!-- Our agent sidebar start -->
+                    <div class="our-agent-sidebar">
+                        <div class="p-20">
+                            <h3 class="sidebar-title">Agente que te puede atender</h3>
+                            <div class="s-border"></div>
+                        </div>
+                        <div id="carouselExampleIndicators5" class="carousel slide text-center" data-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="team-1">
+                                        <div class="team-photo">
+                                            <a href="#">
+                                                <img src="4dm1n/'.$item["foto"].'" alt="agent-2" class="img-fluid">
+                                            </a>
+                                            <ul class="social-list clearfix">';
+                                            if ($social["Facebook"] != "") echo '<li><a href="'.$social["Facebook"].'" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>';
+                                            if ($social["Twitter"] != "") echo '<li><a href="'.$social["Twitter"].'" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>';
+                                            if ($social["LinkedIn"] != "") echo '<li><a href="'.$social["LinkedIn"].'" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>';
+
+                                            echo'</ul>
+                                        </div>
+                                        <div class="team-details">
+                                            <h5><a href="detalles-agente.php?id='.$item["idAgente"].'">'.$item["nombre"].'</a></h5>
+                                            <h6>'.$item["puesto"].'</h6>
+                                            ';
+                                        if ($item["telefono"] != "") echo '<i class="flaticon-phone"></i><a href="tel:+52'.$item["telefono"].'"> +52 '.$item["telefono"].'</a>';
+                                        echo '
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- sidebar right -->
+            </div><!-- class col-lg-4 -->
+        </div>
+    </div>
+</div>
+<!-- Properties details page end -->';
+    }
+
+
+
+
+
 	public function listaPropiedades(){
 
 		$respuesta = buscaModels::buscaPropiedades("propiedades");
@@ -21,7 +206,7 @@ class propiedades{
                         <div class="detail">
                          ID: '.$item["id"].'<br>
                             <h1 class="title">
-                                <a href="properties-details.html">'.$item["titulo"].'</a>
+                                <a href="detalles-propiedad.php?id='.$item["id"].'">'.$item["titulo"].'</a>
                             </h1>
 
                             <div class="location">
@@ -31,19 +216,19 @@ class propiedades{
                             </div>
                         </div>
                         <ul class="facilities-list clearfix">
-                            <li>
-                                <span>Area</span>3600 Sqft
-                            </li>
-                            <li>
-                                <span>Beds</span> 3
-                            </li>
-                            <li>
-                                <span>Baths</span> 2
-                            </li>
-                            <li>
-                                <span>Garage</span> 1
-                            </li>
-                        </ul>
+                                    <li>
+                                        <span>Constr.</span>'.$item["areaConstruccion"].'
+                                    </li>
+                                    <li>
+                                        <span>Habitaciones</span> '.$item["habitaciones"].'
+                                    </li>
+                                    <li>
+                                        <span>Ba&ntilde;os</span> '.$item["banos"].'
+                                    </li>
+                                    <li>
+                                        <span>Tipo</span> '.$item["status"].'
+                                    </li>
+                                </ul><div><br><br></div>
                         <div class="footer">
                             <a href="#">
                                 <i class="flaticon-people"></i> Jhon Doe
@@ -73,16 +258,18 @@ public function todasPropiedades(){
                                     <div class="listing-badges">
                                         <span class="featured">Featured</span>
                                     </div>
-                                    <div class="price-box"><span>$850.00</span> Per month</div>
+                                    <div class="price-box"><span>$'.number_format($item["precio"]).'</span></div>
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-7 col-pad">
                             <div class="detail">
                                 <div class="hdg">
-                                    <h3 class="title">
-                                        <a href="properties-details.html">'.$item["titulo"].'</a>
-                                    </h3>
+                                   ID: '.$item["id"].'<br>
+                                    <h1 class="title">
+                                        <a href="detalles-propiedad.php?id='.$item["id"].'">'.$item["titulo"].'</a>
+                                    </h1>
+
                                     <h5 class="location">
                                         <a href="properties-details.html">
                                             <i class="flaticon-pin"></i>'.$item["direccion"].', '.$item["estado"].'
@@ -91,16 +278,19 @@ public function todasPropiedades(){
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>
-                                        <span>Area</span>3600 Sqft
+                                        <span>Construcci&oacute;n</span>'.$item["areaConstruccion"].'
                                     </li>
                                     <li>
-                                        <span>Beds</span> 3
+                                        <span>Terreno</span>'.$item["areaTerreno"].'
                                     </li>
                                     <li>
-                                        <span>Baths</span> 2
+                                        <span>Habitaciones</span> '.$item["habitaciones"].'
                                     </li>
                                     <li>
-                                        <span>Garage</span> 1
+                                        <span>Ba&ntilde;os</span> '.$item["banos"].'
+                                    </li>
+                                    <li>
+                                        <span>Tipo</span> '.$item["status"].'
                                     </li>
                                 </ul><div><br><br></div>
                                 <div class="footer">

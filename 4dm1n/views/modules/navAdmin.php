@@ -92,7 +92,7 @@
                         </ul>
                         <h4>Cuenta</h4>
                         <ul>
-                            <li><a href="index.php?action=edita-usuario"><i class="flaticon-people"></i>Mi Perfil</a></li>
+                            <li><a href="index.php?action=edita-usuario&idEditar=<?php echo $_SESSION['id']; ?>" class="nav-link"><i class="flaticon-people"></i>Mi Perfil</a></li>
                             <li><a href="index.php?action=salir"><i class="flaticon-logout"></i>Salir</a></li>
                         </ul>
                     </div>

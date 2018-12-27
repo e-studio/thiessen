@@ -163,6 +163,96 @@ class Datos extends Conexion{
 	}
 
 
+	/*=============================================
+	REGISTRO DE PROPIEDADES
+	=============================================*/
+
+	static public function mdlIngresarPropiedad($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotos, detalles, caracteristicas, vendedor) VALUES (:nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
+
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":status", $datos["status"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+		$stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
+		$stmt->bindParam(":mtsTerreno", $datos["mtsTerreno"], PDO::PARAM_STR);
+		$stmt->bindParam(":mtsConstruccion", $datos["mtsConstruccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":habitaciones", $datos["habitaciones"], PDO::PARAM_STR);
+		$stmt->bindParam(":banos", $datos["banos"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":CP", $datos["CP"], PDO::PARAM_INT);
+
+		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+
+		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":caract", $datos["caract"], PDO::PARAM_STR);
+		$stmt->bindParam(":agenteID", $datos["agenteID"], PDO::PARAM_INT);
+
+
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
+
+	}
+
+
+	/*=============================================
+	ACTUALIZA PROPIEDADES
+	=============================================*/
+
+	static public function mdlActualizarPropiedad($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotos=:foto, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
+
+		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":status", $datos["status"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+		$stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
+		$stmt->bindParam(":mtsTerreno", $datos["mtsTerreno"], PDO::PARAM_STR);
+		$stmt->bindParam(":mtsConstruccion", $datos["mtsConstruccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":habitaciones", $datos["habitaciones"], PDO::PARAM_STR);
+		$stmt->bindParam(":banos", $datos["banos"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":CP", $datos["CP"], PDO::PARAM_STR);
+		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":caract", $datos["caract"], PDO::PARAM_STR);
+		$stmt->bindParam(":agenteID", $datos["agenteID"], PDO::PARAM_INT);
+
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
+
+	}
+
+
 	#BORRAR USUARIO
 	#-------------------------------------
 	public function mdlBorrarEmpleado($datosModel,$tabla){
@@ -195,6 +285,22 @@ class Datos extends Conexion{
 	#-------------------------------------
 
 	public function mdlBuscaEmpleado($usuario, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id = :id");
+
+		$stmt->bindParam(":id", $usuario, PDO::PARAM_INT);
+
+		$stmt -> execute();
+		return $stmt -> fetch();
+
+		$stmt->close();
+	}
+
+
+	#BUSCA UNA PROPIEDAD
+	#-------------------------------------
+
+	public function mdlBuscaPropiedad($usuario, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id = :id");
 

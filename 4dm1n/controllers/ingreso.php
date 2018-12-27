@@ -16,82 +16,83 @@ class Ingreso{
 
 				$respuesta = IngresoModels::ingresoModel($datosController, "usuarios");
 
-				// foreach ($respuesta as $row => $item){
-				// 	echo'<script>alert("'.$item["id"].$item["nombre"].' -> '.$item["telefono"].'->'.$item["email"].'");</script>';
-				// 	}
-				// 	echo '<div class="alert alert-danger">Ha fallado 3 veces, demuestre que no es un robot</div>';
 
+				//echo '<script>alert("'.$respuesta["nombre"].' Sopas");</script>';
 
 				if($respuesta['email'] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
-					//echo '<script>alert("'.$_POST["usuarioIngreso"].' Sopas");</script>';
-					$_SESSION["validar"] = true;
+
+
+						$_SESSION["validar"] = true;
+						$_SESSION["id"] = $respuesta["id"];
+						$_SESSION["email"] = $respuesta["email"];
+						$_SESSION["nombre"] = $respuesta["nombre"];
+						$_SESSION["foto"] = $respuesta["foto"];
+						$_SESSION["perfil"] = $respuesta["perfil"];
+
+
 					echo '<script>window.location="index.php?action=inicio";</script>';
 				}
 				else{
-					echo '<script>alert("'.$respuesta['id'].' Niguas");</script>';
-					echo '<script>window.location="index.php";</script>';
+					/*echo '<script>alert("'.$respuesta['id'].' Niguas");</script>';
+					echo '<script>window.location="index.php";</script>';*/
+					echo '<div class="alert alert-danger">Verifique Usuario/Password</div>';
 				}
 
 
 
 
-				$intentos = $respuesta["intentos"];
-				$usuarioActual = $_POST["usuarioIngreso"];
-				$maximoIntentos = 2;
+				// $intentos = $respuesta["intentos"];
+				// $usuarioActual = $_POST["usuarioIngreso"];
+				// $maximoIntentos = 2;
 
-				if($intentos < $maximoIntentos){
+				//if($intentos < $maximoIntentos){
 
-					if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
+					// if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
 
-						$intentos = 0;
+					// 	$intentos = 0;
 
-						$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
+					// 	$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
 
-						$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
-
-						session_start();
-
-						$_SESSION["validar"] = true;
-						$_SESSION["usuario"] = $respuesta["usuario"];
-						$_SESSION["nombre"] = $respuesta["nombre"];
-						$_SESSION["rol"] = $respuesta["rol"];
-						$_SESSION["sistema"] = $respuesta["sistema"];
+					// 	$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
 
 
 
-						header("location:index.php?action=inicio");
 
-					}
 
-					else{
+					// 	header("location:index.php?action=inicio");
 
-						++$intentos;
+					// }
 
-						$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
+					// else{
 
-						$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
+					// 	++$intentos;
 
-						echo '<div class="alert alert-danger">Verifique Usuario/Password</div>';
+					// 	$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
 
-					}
+					// 	$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
 
-				}
+					// 	echo '<div class="alert alert-danger">Verifique Usuario/Password</div>';
 
-				else{
+					//}
 
-						$intentos = 0;
+				//}
 
-						$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
+				// else{
 
-						$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
+				// 		$intentos = 0;
 
-						echo '<div class="alert alert-danger">Ha fallado 3 veces, demuestre que no es un robot</div>';
+				// 		$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
 
-				}
+				// 		$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
+
+				// 		echo '<div class="alert alert-danger">Ha fallado 3 veces, demuestre que no es un robot</div>';
+
+				// }
 
 			}
 
-		}
-	}
+		}// si se capturo usuarioIngreso
 
-}
+	} // function Ingreso
+
+} //Class
