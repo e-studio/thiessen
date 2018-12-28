@@ -45,33 +45,38 @@
 
             </div>
         </div>
-        <form action="#" method="GET" enctype="multipart/form-data">
+
+        <form action="controllers/sendemail.php" method="POST" enctype="multipart/form-data">
+            <!-- Datos a quien se enviara el correo electronico -->
+            <input type="text" name="agente" value="Peter Thiessen" hidden>
+            <input type="email" name="emailAgente"  value="peter@thiessen.com.mx" hidden>
+            <!-- ----------------------------------------------------------------------------- -->
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group name">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
+                                <input type="text" name="name" class="form-control" placeholder="Nombre" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group email">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group subject">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Titulo del mensaje" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group number">
-                                <input type="text" name="phone" class="form-control" placeholder="Number">
+                                <input type="tel" name="phone" class="form-control" placeholder="Celular" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group message">
-                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Mensaje" required></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">

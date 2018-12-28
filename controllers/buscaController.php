@@ -465,7 +465,12 @@ class agentes{
                     <div class="contact-2 widget">
                         <h3 class="sidebar-title">Mensaje Directo</h3>
                         <div class="s-border"></div>
-                        <form action="#" method="GET" enctype="multipart/form-data">
+                        <form action="controllers/sendemail.php" method="POST" enctype="multipart/form-data">
+                            <!-- Datos a quien se enviara el correo electronico -->
+                            <input type="text" name="agente" value="'.$item['nombre'].'" hidden>
+                            <input type="email" name="emailAgente"  value="'.$item['email'].'" hidden>
+                            <input type="text" name="subject" value="Mensaje de thiessen.com.mx" hidden>
+                            <!-- ----------------------------------------------------------------------------- -->
                             <div class="rowo">
                                 <div class="form-group name">
                                     <input type="text" name="name" class="form-control" placeholder="Tu Nombre" required>
