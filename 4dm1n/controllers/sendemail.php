@@ -72,10 +72,9 @@ class Mailer{
 
 					return "error al enviar";
 				}
-
+			return "ok";
 			} //if($pass
-			 	return "ok";
-			 }
+
 		else {
 			return "no existe";
 		}

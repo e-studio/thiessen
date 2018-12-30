@@ -7,8 +7,8 @@ require '../extensions/phpmailer/src/SMTP.php';
 
 
 
-$contacto = $_POST["name"];   	//quien modifico la orden
-$emailContacto = $_POST["email"];	//mail de quien modifica
+$contacto = $_POST["name"];   	//quien envio el correo
+$emailContacto = $_POST["email"];	//mail de quien envia
 $titulo = $_POST["subject"];
 $celular = $_POST["phone"];
 $mensaje = $_POST["message"];
