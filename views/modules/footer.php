@@ -66,7 +66,7 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <ul class="social-list clearfix">
-                    <li><a href="https://www.facebook.com/Thiessen-Real-Estate-471333843273663/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.facebook.com/realthiessen/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="https://www.instagram.com/realthiessen/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
                 </ul>
             </div>

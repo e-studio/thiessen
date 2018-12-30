@@ -320,7 +320,7 @@ class Datos extends Conexion{
 
 		$stmt = Conexion::conectar()->prepare("SELECT nombre, password FROM $tabla WHERE email = :email");
 
-		$stmt->bindParam(":email", $usuario, PDO::PARAM_INT);
+		$stmt->bindParam(":email", $usuario, PDO::PARAM_STR);
 
 		$stmt -> execute();
 		return $stmt -> fetch();
