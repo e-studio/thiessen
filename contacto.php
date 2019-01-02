@@ -90,13 +90,13 @@
                     <div class="opening-hours bg-light">
                         <h3>Opening Hours</h3>
                         <ul class="list-style-none">
-                            <li><strong>Sunday</strong> <span class="text-red"> closed</span></li>
-                            <li><strong>Monday</strong> <span> 10 AM - 8 PM</span></li>
-                            <li><strong>Tuesday </strong> <span> 10 AM - 8 PM</span></li>
-                            <li><strong>Wednesday </strong> <span> 10 AM - 8 PM</span></li>
-                            <li><strong>Thursday </strong> <span> 10 AM - 8 PM</span></li>
-                            <li><strong>Friday </strong> <span> 10 AM - 8 PM</span></li>
-                            <li><strong>Saturday </strong> <span> 10 AM - 8 PM</span></li>
+                            <li><strong>Sunday</strong> <span class="text-red"> Cerrado</span></li>
+                            <li><strong>Monday</strong> <span> 8 AM - 5 PM</span></li>
+                            <li><strong>Tuesday </strong> <span> 8 AM - 5 PM</span></li>
+                            <li><strong>Wednesday </strong> <span> 8 AM - 5 PM</span></li>
+                            <li><strong>Thursday </strong> <span> 8 AM - 5 PM</span></li>
+                            <li><strong>Friday </strong> <span> 8 AM - 5 PM</span></li>
+                            <li><strong>Saturday </strong> <span> Cerrado</span></li>
                         </ul>
                     </div>
                 </div>

@@ -4,9 +4,22 @@ require_once "4dm1n/models/conexion.php";
 
 class buscaModels{
 
+	public function buscaPropiedadesRecientes($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE destacada = 1 ORDER BY fechaRegistro DESC");
+
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
+
 	public function buscaPropiedades($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY fechaRegistro DESC");
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY destacada DESC");
 
 		$stmt->execute();
 

@@ -189,7 +189,7 @@ class propiedades{
 
 	public function listaPropiedades(){
 
-		$respuesta = buscaModels::buscaPropiedades("propiedades");
+		$respuesta = buscaModels::buscaPropiedadesRecientes("propiedades");
 		foreach ($respuesta as $row => $item){
 
 			echo '<div class="slick-slide-item">
