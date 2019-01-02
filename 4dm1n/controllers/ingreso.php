@@ -17,8 +17,6 @@ class Ingreso{
 				$respuesta = IngresoModels::ingresoModel($datosController, "usuarios");
 
 
-				//echo '<script>alert("'.$respuesta["nombre"].' Sopas");</script>';
-
 				if($respuesta['email'] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
 
 
@@ -38,56 +36,6 @@ class Ingreso{
 					echo '<div class="alert alert-danger">Verifique Usuario/Password</div>';
 				}
 
-
-
-
-				// $intentos = $respuesta["intentos"];
-				// $usuarioActual = $_POST["usuarioIngreso"];
-				// $maximoIntentos = 2;
-
-				//if($intentos < $maximoIntentos){
-
-					// if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
-
-					// 	$intentos = 0;
-
-					// 	$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
-
-					// 	$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
-
-
-
-
-
-					// 	header("location:index.php?action=inicio");
-
-					// }
-
-					// else{
-
-					// 	++$intentos;
-
-					// 	$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
-
-					// 	$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
-
-					// 	echo '<div class="alert alert-danger">Verifique Usuario/Password</div>';
-
-					//}
-
-				//}
-
-				// else{
-
-				// 		$intentos = 0;
-
-				// 		$datosController = array("usuarioActual"=>$usuarioActual, "actualizarIntentos"=>$intentos);
-
-				// 		$respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");
-
-				// 		echo '<div class="alert alert-danger">Ha fallado 3 veces, demuestre que no es un robot</div>';
-
-				// }
 
 			}
 

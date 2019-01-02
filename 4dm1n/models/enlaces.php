@@ -15,6 +15,7 @@ class EnlacesModels{
 		   $enlaces == "mis-usuarios" ||
 		   $enlaces == "agrega-usuario" ||
 		   $enlaces == "edita-usuario" ||
+		   $enlaces == "property" ||
 		   //$enlaces == "perfil" ||
 		   $enlaces == "salir"
 		   ){

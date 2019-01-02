@@ -166,6 +166,174 @@ class MvcController{
 	}
 
 
+	/*=============================================
+	REGISTRO DE PROPIEDAD
+	=============================================*/
+
+	static public function ctrCrearProperty(){
+
+		if(isset($_POST["name"])){
+
+			   	/*=============================================
+				VALIDAR IMAGEN
+				=============================================*/
+
+				$ruta = "views/img/propiedades/house-icon.png";
+
+				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+
+
+					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+					$nuevoAncho = 730;
+					$nuevoAlto = 486;
+
+					/*=============================================
+					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+					=============================================*/
+
+					$directorio = "views/img/propiedades";
+
+					if (!file_exists($directorio)) {     // si el directorio no existe lo creamos
+						mkdir($directorio, 0755);
+					}
+
+					/*=============================================
+					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================*/
+
+					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "views/img/propiedades/".$aleatorio.".jpg";
+
+						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagejpeg($destino, $ruta);
+
+					}
+
+					if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "views/img/propiedades/".$aleatorio.".png";
+
+						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagepng($destino, $ruta);
+
+					}
+
+				} //si se eligio foto
+
+				$tabla = "propiedades";
+				//$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
+				$caract ="Caracteristicas";
+
+				$datos = array("id" => $_POST["id"],
+							   "nombre" => $_POST["name"],
+							   "status" => "prueba",
+					           "precio" => 1,
+					           "mtsTerreno" => 2,
+					           "mtsConstruccion" => 3,
+					           //"password" => $encriptar,
+					           "habitaciones" => 1,
+					           "banos" => 1,
+					           "categoria" => "prueba",
+					           "direccion" => "prueba",
+					           "ciudad" => "prueba",
+					           "estado" => "prueba",
+					           "CP" => 1,
+					           "detalles" => "prueba",
+					           "caract" => "prueba",
+					           "agenteID" => 9,
+
+					           "foto"=>$ruta,
+					           "estado" => "prueba",
+					           //"fechaNac" => $_POST["fechaNac"],
+					           "caract" => "prueba");
+
+				$respuesta = Datos::mdlIngresarPropiedad($tabla, $datos);
+
+
+				if($respuesta == "ok"){
+
+					echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡Datos guardados correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-propiedades";
+
+						}
+
+					});
+
+
+					</script>';
+
+
+				}
+
+
+			else{
+
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡Error al registrar, Verifique los datos !",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=property";
+
+						}
+
+					});
+
+
+				</script>';
+
+			}
+
+
+		}//isset
+
+
+	} // funcion
+
+
 
 	#LISTADO DE USUARIOS
 	#------------------------------------
@@ -446,8 +614,32 @@ class MvcController{
 	=============================================*/
 
 	public function ctrCrearPropiedad(){
+		$target_dir = "views/img/propiedades/";
+		$uploadOk = 1;
+		$exists="";
 
+	if(isset($_POST["submit"])) {
+		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
+		// Check if file already exists
+		if (file_exists($target_file)) {
+		    $exists = ", already exists.";
+		    $uploadOk = 0;
+		}
+
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    echo "Sorry, your file was not uploaded".$exists;
+		// if everything is ok, try to upload file
+		} else {
+		     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		     } else {
+		         echo "Sorry, there was an error uploading your file.";
+		     }
+		}
+
+ 	}
 	} // funcion
 
 
@@ -571,59 +763,59 @@ class MvcController{
 				$respuesta = Datos::mdlActualizarPropiedad($tabla, $datos);
 
 
-			// 	if($respuesta == "ok"){
+				if($respuesta == "ok"){
 
-			// 		echo '<script>
+					echo '<script>
 
-			// 		swal({
+					swal({
 
-			// 			type: "success",
-			// 			title: "¡Se ha guardado la informacion correctamente!",
-			// 			showConfirmButton: true,
-			// 			confirmButtonText: "Cerrar"
+						type: "success",
+						title: "¡Se ha guardado la informacion correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
 
-			// 		}).then(function(result){
+					}).then(function(result){
 
-			// 			if(result.value){
+						if(result.value){
 
-			// 				window.location = "index.php?action=mis-propiedades";
+							window.location = "index.php?action=mis-propiedades";
 
-			// 			}
+						}
 
-			// 		});
-
-
-			// 		</script>';
+					});
 
 
-			// 	}
+					</script>';
 
 
-			// else{
-
-			// 	echo '<script>
-
-			// 		swal({
-
-			// 			type: "error",
-			// 			title: "¡No se pudo guardar la informacion!",
-			// 			showConfirmButton: true,
-			// 			confirmButtonText: "Cerrar"
-
-			// 		}).then(function(result){
-
-			// 			if(result.value){
-
-			// 				window.location = "index.php?action=mis-propiedades";
-
-			// 			}
-
-			// 		});
+				}
 
 
-			// 	</script>';
+			else{
 
-			// }
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡No se pudo guardar la informacion!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-propiedades";
+
+						}
+
+					});
+
+
+				</script>';
+
+			}
 
 
 		}

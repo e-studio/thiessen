@@ -113,6 +113,43 @@ class Datos extends Conexion{
 
 	}
 
+	/*=============================================
+	REGISTRO DE PROPERTY
+	=============================================*/
+
+	static public function mdlIngresarProperty($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, telefono, email, password, personal, titulo, perfil, foto, estado, ultimoLogin, fechaNac, sociales) VALUES (:nombre, :telefono, :email, :password, :personal, :titulo, :perfil, :foto, :estado, :ultimo_login, :fechaNac, :sociales)");
+
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":personal", $datos["personal"], PDO::PARAM_STR);
+		$stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":ultimo_login", $datos["ultimo_login"], PDO::PARAM_STR);
+		$stmt->bindParam(":fechaNac", $datos["fechaNac"], PDO::PARAM_STR);
+		$stmt->bindParam(":sociales", $datos["sociales"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
+
+	}
+
 
 	/*=============================================
 	ACTUALIZA USUARIO

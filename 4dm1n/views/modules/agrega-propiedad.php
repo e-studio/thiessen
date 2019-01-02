@@ -14,20 +14,20 @@ include "navAdmin.php";
 
 <div class="col-sm-12 col-md-6"><h4>Registro de Nueva Propiedad</h4></div>
 <div class="submit-address dashboard-list">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <h4 class="bg-grea-3">Informaci&oacute;n B&aacute;sica</h4>
         <div class="search-contents-sidebar">
             <div class="row pad-20">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Titulo</label>
-                        <input type="text" class="input-text" name="nombre" placeholder="Titulo de la propiedad" required>
-                    </div>
+                        <input type="text" class="input-text" name="nombre" placeholder="Titulo de la propiedad" >  <!-- Requerido -->
+                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Tipo</label>
-                        <select class="selectpicker search-fields" name="status" required>
+                        <select class="selectpicker search-fields" name="status">
                             <option value="Venta">Venta</option>
                             <option value="Renta">Renta</option>
                         </select>
@@ -36,14 +36,14 @@ include "navAdmin.php";
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Precio</label>
-                        <input type="text" class="input-text" name="precio" placeholder="sin signos, puntos y comas" required>
+                        <input type="text" class="input-text" name="precio" placeholder="sin signos, puntos y comas" > <!-- Requerido -->
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Habitaciones</label>
-                        <select class="selectpicker search-fields" name="habitaciones" required>
+                        <select class="selectpicker search-fields" name="habitaciones" >
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -55,7 +55,7 @@ include "navAdmin.php";
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Ba&ntilde;os</label>
-                        <select class="selectpicker search-fields" name="banos" required>
+                        <select class="selectpicker search-fields" name="banos" >
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -66,7 +66,7 @@ include "navAdmin.php";
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Categor&iacute;a</label>
-                        <select class="selectpicker search-fields" name="categoria" required>
+                        <select class="selectpicker search-fields" name="categoria" > <!-- Requerido -->
                             <option>Departamento</option>
                             <option>Casa</option>
                             <option>Terreno</option>
@@ -89,16 +89,17 @@ include "navAdmin.php";
         </div>
         <h4 class="bg-grea-3">Ubicaci&oacute;n</h4>
         <div class="row pad-20">
+
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Direcci&oacute;n</label>
-                    <input type="text" class="input-text" name="direccion"  placeholder="Direcci&oacute;n" required>
+                    <input type="text" class="input-text" name="direccion"  placeholder="Direcci&oacute;n" >   <!-- Requerido -->
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Ciudad</label>
-                    <input type="text" class="input-text" name="ciudad"  placeholder="Ciudad" required>
+                    <input type="text" class="input-text" name="ciudad"  placeholder="Ciudad" > <!-- Requerido -->
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12">
@@ -147,6 +148,8 @@ include "navAdmin.php";
                 </div>
             </div>
         </div>
+
+    <!-- ******************************************************************************************************************************************* -->
         <h4 class="bg-grea-3">Foto Principal</h4>
         <div class="col-lg-3 col-md-3">
                 <div class="edit-profile-photo">
@@ -154,11 +157,17 @@ include "navAdmin.php";
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>
-                            <input type="file" name="imagen" id="imagen" class="upload">
+                            <!-- <input type="file" name="imagen" id="imagen" class="upload"> -->
+                            <input type="file" name="fileToUpload" id="fileToUpload" class="upload" required>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+    <!-- ******************************************************************************************************************************************* -->
 
         <h4 class="bg-grea-3">Informaci&oacute;n Detallada</h4>
         <div class="row pad-20">
@@ -238,7 +247,7 @@ include "navAdmin.php";
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" class="input-text" name="agenteID" placeholder="Id del Agente" required>
+                    <input type="text" class="input-text" name="agenteID" placeholder="Id del Agente">
                 </div>
             </div>
 
