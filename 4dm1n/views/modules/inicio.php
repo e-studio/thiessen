@@ -36,8 +36,15 @@ include "navAdmin.php";
                             <div class="col-lg-3 col-md-3 col-sm-6">
                                 <div class="ui-item bg-success">
                                     <div class="left">
-                                        <h4>242</h4>
-                                        <p>Active Listings</p>
+
+                                        <?php ob_start();
+                                          if (is_readable('views/contador.php')) include('views/contador.php');
+                                          ob_end_clean();
+                                          ob_flush();
+                                    ?>
+                                     <h4><?php echo $num_visitas; ?></h4>
+
+                                        <p>Visitas</p>
                                     </div>
                                     <div class="right">
                                         <i class="fa fa-map-marker"></i>
