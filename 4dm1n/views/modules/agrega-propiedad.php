@@ -1,5 +1,5 @@
 <?php
-/*session_start();
+//session_start();
 
 if(!$_SESSION["validar"]){
 
@@ -8,7 +8,7 @@ if(!$_SESSION["validar"]){
     exit();
 
 
-}*/
+}
 include "navAdmin.php";
  ?>
 <form action="" method="POST" enctype="multipart/form-data">

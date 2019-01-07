@@ -156,16 +156,6 @@ class Datos extends Conexion{
 	=============================================*/
 
 	static public function mdlActualizaUsuario($datos, $tabla){
-		// if ($datos["password"]==""){
-
-		// 	$instruccion = "UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id";
-
-		// }
-		// else{
-
-		// 	$instruccion = "UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, password=:password, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id";
-		// }
-		// //return $instruccion;
 
 		 $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, telefono=:telefono, email=:email, password=:password, personal=:personal, titulo=:titulo, perfil=:perfil, foto=:foto, estado=:estado, ultimoLogin=:ultimoLogin, fechaNac=:fechaNac, sociales=:sociales WHERE id=:id");
 
@@ -256,9 +246,10 @@ class Datos extends Conexion{
 
 	static public function mdlActualizarPropiedad($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotos=:foto, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET destacada=:destacada, titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotos=:foto, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
 
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":destacada", $datos["destacada"], PDO::PARAM_INT);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":status", $datos["status"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);

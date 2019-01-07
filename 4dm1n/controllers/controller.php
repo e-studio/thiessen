@@ -332,6 +332,185 @@ class MvcController{
 	} // funcion
 
 
+	/*=============================================
+	ACTUALIZA DATOS DE PROPIEDAD
+	=============================================*/
+
+	static public function ctrActProperty(){
+		if(isset($_POST["actualiza"])){
+
+			$ruta = $_POST["foto"];
+
+			   	/*=============================================
+				VALIDAR IMAGEN
+				=============================================*/
+
+				//$ruta = $_POST["nuevaFoto"];
+
+				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+
+
+				list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+				$nuevoAncho = 730;
+				$nuevoAlto = 486;
+
+				/*=============================================
+				CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+				=============================================*/
+
+				$directorio = "views/img/propiedades";
+
+				if (!file_exists($directorio)) {     // si el directorio no existe lo creamos
+					mkdir($directorio, 0755);
+				}
+
+				/*=============================================
+				DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+				=============================================*/
+
+				if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+					/*=============================================
+					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+					=============================================*/
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta = "views/img/propiedades/".$aleatorio.".jpg";
+
+					$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagejpeg($destino, $ruta);
+
+				}
+
+				if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+					/*=============================================
+					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+					=============================================*/
+
+					$aleatorio = mt_rand(100,999);
+
+					$ruta = "views/img/propiedades/".$aleatorio.".png";
+
+					$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagepng($destino, $ruta);
+
+				}
+				//echo '<script>alert("Dentro :'.$ruta.'");</script>';
+
+			} //si se eligio foto
+
+				$tabla = "propiedades";
+
+				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
+
+				echo '<script>alert("Destacada :'.$_POST["destacada"].'");</script>';
+				if (is_null($_POST["destacada"]) || empty($_POST["destacada"]))
+					{
+						$dest = 0;
+					}
+				else {
+						$dest=1;
+					}
+					echo '<script>alert("Destacada :'.$dest.'");</script>';
+
+				$datos = array("id" => $_POST["id"],
+							   "destacada" => $dest,
+							   "nombre" => $_POST["name"],
+							   "status" => $_POST["status"],
+					           "precio" => $_POST["precio"],
+					           "mtsTerreno" => $_POST["mtsTerreno"],
+					           "mtsConstruccion" => $_POST["mtsConstruccion"],
+					           "habitaciones" => $_POST["habitaciones"],
+					           "banos" => $_POST["banos"],
+					           "categoria" => $_POST["categoria"],
+					           "direccion" => $_POST["direccion"],
+					           "ciudad" => $_POST["ciudad"],
+					           "estado" => $_POST["estado"],
+					           "CP" => $_POST["CP"],
+					           "detalles" => $_POST["detalles"],
+					           "caract" => json_encode($caract),
+					           "agenteID" => $_POST["agenteID"],
+					           "foto"=>$ruta,
+					           "caract" => json_encode($caract));
+
+				//var_dump($datos);
+
+				$respuesta = Datos::mdlActualizarPropiedad($tabla, $datos);
+
+
+				if($respuesta == "ok"){
+
+					echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡Datos guardados correctamente! ",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=mis-propiedades";
+
+						}
+
+					});
+
+
+					</script>';
+
+
+				}
+
+
+			else{
+
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡Error al registrar, Verifique los datos !",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.location = "index.php?action=property";
+
+						}
+
+					});
+
+
+				</script>';
+
+			}
+
+
+		}//isset
+
+
+	} // funcion
+
+
 
 	#LISTADO DE USUARIOS
 	#------------------------------------
@@ -816,8 +995,8 @@ class MvcController{
 			}
 
 
-		}
-	}
+		} //isset actualiza
+	} // funcion ctrActualizaPropiedad
 
 
 }
