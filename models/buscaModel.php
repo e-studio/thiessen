@@ -19,7 +19,7 @@ class buscaModels{
 
 	public function buscaPropiedades($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY destacada DESC");
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY destacada DESC, fechaRegistro DESC");
 
 		$stmt->execute();
 

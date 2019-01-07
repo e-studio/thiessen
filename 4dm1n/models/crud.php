@@ -63,7 +63,7 @@ class Datos extends Conexion{
 
 	public function mdlListaPropiedades($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY fechaRegistro DESC");
 		$stmt->execute();
 
 		#fetchAll(): Obtiene todas las filas de un conjunto de resultados asociado al objeto PDOStatement.
@@ -206,8 +206,12 @@ class Datos extends Conexion{
 
 	static public function mdlIngresarPropiedad($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotos, detalles, caracteristicas, vendedor) VALUES (:nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
+		if ($datos["destacada"] == 1) {$dest = 1;}
+		else {$dest=0;}
 
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (destacada, titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotos, detalles, caracteristicas, vendedor) VALUES (:destacada, :nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
+
+		$stmt->bindParam(":destacada", $dest, PDO::PARAM_INT);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":status", $datos["status"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);

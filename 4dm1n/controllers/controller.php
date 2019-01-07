@@ -244,31 +244,29 @@ class MvcController{
 				} //si se eligio foto
 
 				$tabla = "propiedades";
-				//$socials = array('Facebook' => $_POST["facebook"], 'Twitter' => $_POST["twitter"], 'LinkedIn' => $_POST["linkedin"]);
-				$caract ="Caracteristicas";
+
+				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
+				//echo '<script>alert("Foto :'.$ruta.'");</script>';
 
 				$datos = array("id" => $_POST["id"],
+							   "destacada" => $_POST["destacada"],
 							   "nombre" => $_POST["name"],
-							   "status" => "prueba",
-					           "precio" => 1,
-					           "mtsTerreno" => 2,
-					           "mtsConstruccion" => 3,
-					           //"password" => $encriptar,
-					           "habitaciones" => 1,
-					           "banos" => 1,
-					           "categoria" => "prueba",
-					           "direccion" => "prueba",
-					           "ciudad" => "prueba",
-					           "estado" => "prueba",
-					           "CP" => 1,
-					           "detalles" => "prueba",
-					           "caract" => "prueba",
-					           "agenteID" => 9,
-
+							   "status" => $_POST["status"],
+					           "precio" => $_POST["precio"],
+					           "mtsTerreno" => $_POST["mtsTerreno"],
+					           "mtsConstruccion" => $_POST["mtsConstruccion"],
+					           "habitaciones" => $_POST["habitaciones"],
+					           "banos" => $_POST["banos"],
+					           "categoria" => $_POST["categoria"],
+					           "direccion" => $_POST["direccion"],
+					           "ciudad" => $_POST["ciudad"],
+					           "estado" => $_POST["estado"],
+					           "CP" => $_POST["CP"],
+					           "detalles" => $_POST["detalles"],
+					           "caract" => json_encode($caract),
+					           "agenteID" => $_POST["agenteID"],
 					           "foto"=>$ruta,
-					           "estado" => "prueba",
-					           //"fechaNac" => $_POST["fechaNac"],
-					           "caract" => "prueba");
+					           "caract" => json_encode($caract));
 
 				$respuesta = Datos::mdlIngresarPropiedad($tabla, $datos);
 

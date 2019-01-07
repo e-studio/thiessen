@@ -254,11 +254,17 @@ public function todasPropiedades(){
                         <div class="col-lg-4 col-md-5 col-pad">
                             <div class="property-thumbnail">
                                 <a href="properties-details.html" class="property-img">
-                                    <img src="4dm1n/'.$item["fotos"].'" alt="properties" class="img-fluid">
-                                    <div class="listing-badges">
-                                        <span class="featured">Featured</span>
-                                    </div>
-                                    <div class="price-box"><span>$'.number_format($item["precio"]).'</span></div>
+                                    <img src="4dm1n/'.$item["fotos"].'" alt="properties" class="img-fluid">';
+
+                                    if ($item["destacada"] == 1){
+                                        echo '<div class="listing-badges">
+                                        <span class="featured">Reciente</span>
+                                    </div>';
+                                    }
+
+
+
+                                   echo '<div class="price-box"><span>$'.number_format($item["precio"]).' </span> '.$item["status"].'</div>
                                 </a>
                             </div>
                         </div>
