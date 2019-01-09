@@ -11,46 +11,43 @@ shuffle($rand);
     <div id="bannerCarousole" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item banner-max-height active">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[0]; ?>.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/banner/house<?php  echo $rand[0]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-center">
-                            <h1>Tu futuro hogar esta aqu&iacute;</h1>
+                            <h1>Agregando Valor</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                Encuentra tu nueva casa con nosotros
                             </p>
-                            <a href="#" class="btn btn-lg btn-theme">Get Started Now</a>
-                            <a href="#" class="btn btn-lg btn-white-lg-outline"><i class="fa fa-download"></i> Free Download</a>
+                            <a href="propiedades.php" class="btn btn-lg btn-theme">Buscar</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item banner-max-height">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[1]; ?>.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/banner/house<?php  echo $rand[1]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-right">
-                            <h1>Find Your Property</h1>
+                            <h1>Tu futuro hogar esta aqu&iacute;</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                Encuentra tu nueva casa con nosotros
                             </p>
-                            <a href="#" class="btn btn-lg btn-theme">Get Started Now</a>
-                            <a href="#" class="btn btn-lg btn-white-lg-outline"><i class="fa fa-download"></i> Free Download</a>
+                            <a href="#" class="btn btn-lg btn-theme">Buscar</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="carousel-item banner-max-height">
-                <img class="d-block w-100" src="4dm1n/views/img/propiedades/house<?php  echo $rand[2]; ?>.jpg" alt="banner">
+                <img class="d-block w-100" src="4dm1n/views/img/banner/house<?php  echo $rand[2]; ?>.jpg" alt="banner">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-left">
-                            <h1>Find Your Property</h1>
+                            <h1>Tiessen | Bienes Raices</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                Conoce nuestro agentes de ventas
                             </p>
-                            <a href="#" class="btn btn-lg btn-theme">Get Started Now</a>
-                            <a href="#" class="btn btn-lg btn-white-lg-outline"><i class="fa fa-download"></i> Free Download</a>
+                            <a href="agentes.php" class="btn btn-lg btn-theme">Conocer</a>
                         </div>
                     </div>
                 </div>
@@ -69,12 +66,12 @@ shuffle($rand);
     </div>
 
     <!-- Search Section start -->
-    <div class="search-section d-none d-xl-block d-lg-block" id="search-style-2">
+    <!--<div class="search-section d-none d-xl-block d-lg-block" id="search-style-2">
         <div class="container">
             <div class="search-section-area ssa2">
                 <div class="search-area-inner">
                     <div class="search-contents">
-                        <form method="GET">
+                         <form method="GET">
                             <div class="row">
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
@@ -159,9 +156,9 @@ shuffle($rand);
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Banner end -->
+    </div>-->
+</div><!-- Banner end -->
+
 
     <?php
 

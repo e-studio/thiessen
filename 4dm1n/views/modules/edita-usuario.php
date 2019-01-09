@@ -15,6 +15,22 @@ $sociales = json_decode($busqueda["sociales"], true);
 
 include "navAdmin.php";
  ?>
+
+ <script type="text/javascript">
+
+
+    var check = function() {
+      $('#new-password, #confirm-new-password').on('keyup', function () {
+        if ($('#new-password').val() == $('#confirm-new-password').val()) {
+            $('#message').html('Coinciden').css('color', 'green');
+            document.getElementById('actualiza').disabled = false;
+        }
+        else $('#message').html('No coinciden').css('color', 'red');
+        //document.getElementById('actualiza').disabled = true;
+    });
+    }
+
+ </script>
 <form action="" method="POST" enctype="multipart/form-data">
 <div class="col-sm-12 col-md-6"><h4>Editar datos de usuario</h4></div>
 <div class="dashboard-list">
@@ -102,23 +118,20 @@ include "navAdmin.php";
                         <div class="col-lg-12">
                             <div class="form-group email">
                                 <label>Password</label>
-                                <input  type="password" name="new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Nuevo Password">
+                                <input  type="password" id="new-password" name="new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Nuevo Password" onkeyup='check();'>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group subject">
                                 <label>Confirma Password</label>
-                                <input type="password" name="confirm-new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Confirme Password">
+                                <input type="password" id="confirm-new-password" name="confirm-new-password" value="<?php echo $busqueda['password'];?>" class="form-control" placeholder="Confirme Password" onkeyup='check();'>
+                                <span id='message'></span>
                             </div>
                         </div>
                     </div>
             </div>
         </div>
-        <div class="col-lg-12">
-            <div class="send-btn">
-                <button type="submit" class="btn btn-md button-theme" name="actualiza">Actualizar Datos</button>
-            </div>
-        </div>
+
     </div>
     <div class="col-md-6">
         <div class="dashboard-list">
@@ -149,6 +162,25 @@ include "navAdmin.php";
 
     </div>
 </div> <!-- row -->
+
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-3">
+        <div  class="send-btn">
+            <button type="button" class="btn btn-md btn-secondary" onclick="window.location.href = 'index.php?action=mis-usuarios'">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="send-btn">
+            <button type="submit" class="btn btn-md button-theme" name="actualiza" id="actualiza" disabled="true">Actualizar Datos</button>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+</div>
+
 </form>
 
 <?php

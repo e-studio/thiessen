@@ -40,6 +40,36 @@ class Datos extends Conexion{
 	}
 
 
+	#-----------------------------------------------------------------------------------------------------------------------
+	#ASIGNA LAS IMAGENES DE UNA PROPIEDAD PARA SER VISTAS EN GALERIA DE IMAGENES
+	#-----------------------------------------------------------------------------------------------------------------------
+
+	public function mdlSubeImagenes($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET fotos = :fotos WHERE id = :propiedad");
+
+		$stmt->bindParam(":fotos", $datos["fotos"], PDO::PARAM_STR);
+		$stmt->bindParam(":propiedad", $datos["propiedad"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+		$stmt->close();
+
+	}
+
+
+
+
+
 
 
 	#LISTA USUARIOS
@@ -246,7 +276,7 @@ class Datos extends Conexion{
 
 	static public function mdlActualizarPropiedad($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET destacada=:destacada, titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotos=:foto, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET destacada=:destacada, titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotoPrincipal=:fotoPrincipal, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
 
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":destacada", $datos["destacada"], PDO::PARAM_INT);
@@ -262,7 +292,7 @@ class Datos extends Conexion{
 		$stmt->bindParam(":ciudad", $datos["ciudad"], PDO::PARAM_STR);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":CP", $datos["CP"], PDO::PARAM_STR);
-		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
+		$stmt->bindParam(":fotoPrincipal", $datos["fotoPrincipal"], PDO::PARAM_STR);
 		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
 		$stmt->bindParam(":caract", $datos["caract"], PDO::PARAM_STR);
 		$stmt->bindParam(":agenteID", $datos["agenteID"], PDO::PARAM_INT);

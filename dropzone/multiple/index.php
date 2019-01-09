@@ -3,10 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dropzone Múltiple subida de archivos con Bootstrap Demo</title>
-<meta name="description" content="Subida de múltiples archivos con Dropzone, Bootstrap 4, PHP y jQuery Sortable."/>
-<meta name="author" content="Jose Aguilar">
-<link rel="shortcut icon" href="https://www.jose-aguilar.com/blog/wp-content/themes/jaconsulting/favicon.ico" />
+<title>Thiessen - Fotos para propiedad</title>
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -16,6 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="js/dropzone.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+
 </head>
 <body>
 
@@ -24,14 +22,14 @@
     <div id="content" class="col-lg-12">
 <form action="index.php" method="post" enctype="multipart/form-data">
     <div class="fallback">
-        <input name="file" type="file" multiple />
+        <input name="file" id="basicUploadFile" type="file" multiple />
     </div>
     <div id="actions" class="row">
         <div class="col-lg-7">
             <!-- The fileinput-button span is used to style the file input field as button -->
             <span class="btn btn-success fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
-                <span>Añadir imágenes...</span>
+                <span>Seleccione imágenes...</span>
             </span>
             <button type="submit" class="btn btn-primary start" style="display: none;">
                 <i class="glyphicon glyphicon-upload"></i>
@@ -61,7 +59,7 @@
                     <img data-dz-thumbnail />
                 </span>
                 <br/>
-                <button class="btn btn-primary start" style="display:none;">
+                <!--<button class="btn btn-primary start" style="display:none;">
                     <i class="glyphicon glyphicon-upload"></i>
                     <span>Empezar</span>
                 </button>
@@ -72,7 +70,7 @@
                 <button data-dz-remove class="btn btn-danger delete">
                     <i class="icon-trash fa fa-trash"></i>
                     <span>Eliminar</span>
-                </button>
+                </button>-->
             </div>
             <div class="col-xs-12 col-lg-9">
                 <p class="name" data-dz-name></p>
@@ -89,7 +87,13 @@
         </div>
     </div>
 
-    <div class="dropzone-here">Drop files here to upload.</div>
+    <div class="dropzone-here">Arrastre las imagenes aqu&iacute;.</div>
+    <input type="text" name="foto1" id="foto1" hidden="true">
+    <input type="text" name="foto2" id="foto2" hidden="true">
+    <input type="text" name="foto3" id="foto3" hidden="true">
+    <input type="text" name="foto4" id="foto4" hidden="true">
+    <input type="text" name="foto5" id="foto5" hidden="true">
+
 </form>
         </div>
     </div>
@@ -118,9 +122,9 @@ previewNode.parentNode.removeChild(previewNode);
 var myDropzone = new Dropzone(document.body, {
     url: "upload.php",
     paramName: "file",
-    acceptedFiles: 'image/*',
+    acceptedFiles: '..image/*',
     maxFilesize: 2,
-    maxFiles: 2,
+    maxFiles: 3,
     thumbnailWidth: 160,
     thumbnailHeight: 160,
     thumbnailMethod: 'contain',
@@ -130,11 +134,17 @@ var myDropzone = new Dropzone(document.body, {
     clickable: ".fileinput-button"
 });
 
+var i=1;
 myDropzone.on("addedfile", function(file) {
+
     $('.dropzone-here').hide();
+    document.querySelector("#foto"+i).value = file.name;  //asigna el nombre de la imagen al input
+    i++;
     // Hookup the start button
-    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file);};
 });
+
+
 
 // Update the total progress bar
 myDropzone.on("totaluploadprogress", function(progress) {
@@ -160,17 +170,7 @@ document.querySelector("#actions .start").onclick = function() {
     myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
 };
 
-$('#previews').sortable({
-    items:'.file-row',
-    cursor: 'move',
-    opacity: 0.5,
-    containment: "parent",
-    distance: 20,
-    tolerance: 'pointer',
-    update: function(e, ui){
-        //actions when sorting
-    }
-});
+
 </script>
 </body>
 </html>

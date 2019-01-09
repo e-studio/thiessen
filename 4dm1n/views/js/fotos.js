@@ -1,8 +1,8 @@
-/**
- *
+
+
+/********************************************************
  * Subir una foto de usuario
- *
- */
+ *********************************************************/
 
 $(".upload").change(function(){
 	var imagen = this.files[0];
@@ -38,3 +38,16 @@ $(".upload").change(function(){
 		});
 	}
 });
+
+
+/* ==============================================
+ FUNCION PARA ABRIR VENTANA NUEVA SIN MENUS
+*================================================*/
+  $(function(){
+            $(document).on('click'," .masFotos",function(e){
+                e.preventDefault();
+                var id = $(this).attr('propiedad');
+                //alert(id);
+                window.open("extensions/dropzone/multiple/index.php?propiedad="+id,'Agregar Fotos','toolbar=no,location=0,directories=no, status=0,menubar=0,scrollbars=0,resizable=0,width=1024,height=800,top=0,left=0');
+            });
+        });

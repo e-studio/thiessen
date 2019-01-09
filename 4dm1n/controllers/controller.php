@@ -15,7 +15,7 @@ class MvcController{
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["new-password"])){
 
 			   	/*=============================================
-				VALIDAR IMAGEN
+				  VALIDAR IMAGEN
 				=============================================*/
 
 				$ruta = "views/img/usuarios/usuario.png";
@@ -27,9 +27,9 @@ class MvcController{
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
-					/*=============================================
-					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
-					=============================================*/
+					/*================================================================
+					  CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+					==================================================================*/
 
 					$directorio = "views/img/usuarios";
 
@@ -51,13 +51,13 @@ class MvcController{
 
 						$ruta = "views/img/usuarios/".$aleatorio.".jpg";
 
-						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]); //toma la imagen original
 
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto); // crea un espacio para la imagen que vamos a subir
 
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);   //  Redimensiona la imagen original y agrega al destino
 
-						imagejpeg($destino, $ruta);
+						imagejpeg($destino, $ruta);  // graba la imagen redimensionada en $ruta
 
 					}
 
@@ -415,7 +415,6 @@ class MvcController{
 
 				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
 
-				echo '<script>alert("Destacada :'.$_POST["destacada"].'");</script>';
 				if (is_null($_POST["destacada"]) || empty($_POST["destacada"]))
 					{
 						$dest = 0;
@@ -423,7 +422,6 @@ class MvcController{
 				else {
 						$dest=1;
 					}
-					echo '<script>alert("Destacada :'.$dest.'");</script>';
 
 				$datos = array("id" => $_POST["id"],
 							   "destacada" => $dest,
@@ -442,7 +440,7 @@ class MvcController{
 					           "detalles" => $_POST["detalles"],
 					           "caract" => json_encode($caract),
 					           "agenteID" => $_POST["agenteID"],
-					           "foto"=>$ruta,
+					           "fotoPrincipal"=>$ruta,
 					           "caract" => json_encode($caract));
 
 				//var_dump($datos);
@@ -512,6 +510,78 @@ class MvcController{
 
 
 
+
+
+	#------------------------------------------------------------------------------------------------------------------------------------------
+	#LISTADO DE USUARIOS
+	#-------------------------------------------------------------------------------------------------------------------------------------------
+
+	public function ctrSubeImagenes(){
+		if(isset($_POST["sube"])){
+
+			$fotos = array('foto1' => $_POST["foto1"], 'foto2' => $_POST["foto2"], 'foto3' => $_POST["foto3"], 'foto4' => $_POST["foto4"], 'foto5' => $_POST["foto5"]);
+
+			$datos = array( "propiedad" => $_POST["propiedad"],
+							"fotos" => json_encode($fotos));
+
+			$respuesta = Datos::mdlSubeImagenes("propiedades", $datos);
+
+			if ($respuesta=="ok"){
+
+				echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡Las Imagenes se asignaron correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.close();
+
+						}
+
+					});
+
+
+					</script>';
+			}
+			else{
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "Error al asignar imagenes",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+
+							window.close();
+
+						}
+
+					});
+
+
+					</script>';
+			}
+
+		}//ISSET
+	}
+
+
+
+
+
+
 	#LISTADO DE USUARIOS
 	#------------------------------------
 
@@ -554,7 +624,7 @@ class MvcController{
 
 		echo '<tr class="responsive-table">
             <td class="listing-photoo">
-                <img src="'.$item["fotos"].'" alt="listing-photo" class="img-fluid" width="120">
+                <img src="'.$item["fotoPrincipal"].'" alt="listing-photo" class="img-fluid" width="120">
             </td>
             <td class="title-container">
 				ID: '.$item["id"].'<br>
@@ -564,6 +634,8 @@ class MvcController{
             </td>
             <td class="expire-date">'.$item["status"].'</td>
             <td class="action">
+
+				<a href="" class="masFotos" propiedad='.$item["id"].' ><i class="fa fa-picture-o"></i> Mas Fotos</a>
                 <a href="index.php?action=edita-propiedad&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
                 <a href="index.php?action=mis-propiedades&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
             </td>

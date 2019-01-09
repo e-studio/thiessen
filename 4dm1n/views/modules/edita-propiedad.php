@@ -19,7 +19,7 @@ include "navAdmin.php";
 <form action="" method="POST" enctype="multipart/form-data">
 
     <input type="text" class="input-text" value="<?php echo $propiedad; ?>" name="id" hidden>
-    <input required type="text" name="foto" value="<?php echo $busqueda['fotos']; ?>" hidden>
+    <input required type="text" name="foto" value="<?php echo $busqueda['fotoPrincipal']; ?>" hidden>
 
 <div class="col-sm-12 col-md-6"><h4>Editar Datos de Propiedad</h4></div>
 <div class="dashboard-list">
@@ -29,7 +29,7 @@ include "navAdmin.php";
             <div class="col-lg-3 col-md-3">
                 <!-- Edit profile photo -->
                 <div class="edit-profile-photo">
-                    <img src="<?php echo $busqueda["fotos"]; ?>" alt="profile-photo" class="img-fluid previsualizar">
+                    <img src="<?php echo $busqueda["fotoPrincipal"]; ?>" alt="profile-photo" class="img-fluid previsualizar">
                     <div class="change-photo-btn">
                         <div class="photoUpload">
                             <span><i class="fa fa-upload"></i></span>
@@ -215,11 +215,7 @@ include "navAdmin.php";
                 </div>
             </div>
         </div>
-        <div class="col-lg-12">
-            <div  class="send-btn">
-                <button type="submit" name="actualiza" class="btn btn-md button-theme">Actualizar Datos</button>
-            </div>
-        </div>
+
     </div>
     <div class="col-md-6">
         <div class="dashboard-list">
@@ -303,6 +299,25 @@ include "navAdmin.php";
 
     </div>
 </div> <!-- row -->
+
+
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-3">
+        <div  class="send-btn">
+            <button type="button" class="btn btn-md btn-secondary" onclick="window.location.href = 'index.php?action=mis-propiedades'">Cancelar</button>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div  class="send-btn">
+            <button type="submit" name="actualiza" class="btn btn-md button-theme">Actualizar Datos</button>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+</div>
+
+
 </form>
 <?php
     $crearUsuario = new MvcController();
