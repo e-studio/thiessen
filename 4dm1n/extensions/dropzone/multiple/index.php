@@ -9,7 +9,7 @@ $propiedad = $_REQUEST['propiedad'];
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dropzone Múltiple subida de archivos con Bootstrap Demo</title>
+<title>Sabir Imagenes para propiedad ID:<?php echo $propiedad; ?> </title>
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -101,12 +101,12 @@ $propiedad = $_REQUEST['propiedad'];
         </div>
     </div>
 <form action="" method="POST" enctype="multipart/form-data">
-    <input type="number" name="propiedad" value="<?php echo $propiedad; ?>">
-    <input type="text" name="foto1" id="foto1" >
-    <input type="text" name="foto2" id="foto2" >
-    <input type="text" name="foto3" id="foto3" >
-    <input type="text" name="foto4" id="foto4" >
-    <input type="text" name="foto5" id="foto5" >
+    <input type="number" name="propiedad" value="<?php echo $propiedad; ?>" hidden="true">
+    <input type="text" name="foto1" id="foto1" hidden="true">
+    <input type="text" name="foto2" id="foto2" hidden="true">
+    <input type="text" name="foto3" id="foto3" hidden="true">
+    <input type="text" name="foto4" id="foto4" hidden="true">
+    <input type="text" name="foto5" id="foto5" hidden="true">
 
     <div class="footer-content row">
         <div class="col-lg-12">

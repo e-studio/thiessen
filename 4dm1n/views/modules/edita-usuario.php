@@ -23,7 +23,7 @@ include "navAdmin.php";
       $('#new-password, #confirm-new-password').on('keyup', function () {
         if ($('#new-password').val() == $('#confirm-new-password').val()) {
             $('#message').html('Coinciden').css('color', 'green');
-            document.getElementById('actualiza').disabled = false;
+            //document.getElementById('actualiza').disabled = false;
         }
         else $('#message').html('No coinciden').css('color', 'red');
         //document.getElementById('actualiza').disabled = true;
@@ -174,7 +174,7 @@ include "navAdmin.php";
 
     <div class="col-lg-6">
         <div class="send-btn">
-            <button type="submit" class="btn btn-md button-theme" name="actualiza" id="actualiza" disabled="true">Actualizar Datos</button>
+            <button type="submit" class="btn btn-md button-theme" name="actualiza" id="actualiza" >Actualizar Datos</button>
         </div>
     </div>
 

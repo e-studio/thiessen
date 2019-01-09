@@ -4,7 +4,6 @@
         <!-- Main title -->
         <div class="main-title">
             <h1>Propiedades Recientes</h1>
-            <p>Encuentra lo que buscas aqui</p>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area">

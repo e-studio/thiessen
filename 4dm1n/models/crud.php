@@ -104,6 +104,32 @@ class Datos extends Conexion{
 	}
 
 
+	# NUMERO DE PROPIEDADES
+	#-------------------------------------
+
+	public function mdlNoProps($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT COUNT(id) as No FROM $tabla");
+		$stmt->execute();
+		return $stmt->fetch();
+		$stmt->close();
+
+	}
+
+
+	# NUMERO DE USUARIOS REGISTRADOS
+	#-------------------------------------
+
+	public function mdlNoUsers($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT COUNT(id) as No FROM $tabla");
+		$stmt->execute();
+		return $stmt->fetch();
+		$stmt->close();
+
+	}
+
+
 
 
 /*=============================================
@@ -229,7 +255,7 @@ class Datos extends Conexion{
 		if ($datos["destacada"] == 1) {$dest = 1;}
 		else {$dest=0;}
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (destacada, titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotos, detalles, caracteristicas, vendedor) VALUES (:destacada, :nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (destacada, titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotoPrincipal, detalles, caracteristicas, vendedor) VALUES (:destacada, :nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
 
 		$stmt->bindParam(":destacada", $dest, PDO::PARAM_INT);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);

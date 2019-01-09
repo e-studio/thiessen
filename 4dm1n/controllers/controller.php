@@ -2,6 +2,28 @@
 
 class MvcController{
 
+
+	#-------------------------------------
+	#Estadisticas para inicio de Dashboard
+	#------------------------------------
+
+	public function ctrNoProps(){
+
+		$respuesta = Datos::mdlNoProps("propiedades");
+
+		echo $respuesta["No"];
+	}
+
+	public function ctrNoUsers(){
+
+		$respuesta = Datos::mdlNoUsers("usuarios");
+
+		echo $respuesta["No"];
+	}
+
+
+
+
 	/*=============================================
 	REGISTRO DE USUARIO
 	=============================================*/
@@ -650,6 +672,13 @@ class MvcController{
 	public function ctrBorrarEmpleado(){
 		if (isset($_GET['idBorrar'])){
 			$datosController = $_GET['idBorrar'];
+
+			$busca = Datos::mdlBuscaEmpleado($_GET['idBorrar'], "usuarios");
+
+			if (!empty($busca['foto']) && file_exists($busca['foto'])) {
+		        unlink($busca['foto']);
+		    }
+
 			$respuesta = Datos::mdlBorrarEmpleado($datosController,"usuarios");
 			if ($respuesta == "success"){
 				echo '<script>
@@ -682,6 +711,40 @@ class MvcController{
 	public function ctrBorrarPropiedad(){
 		if (isset($_GET['idBorrar'])){
 			$datosController = $_GET['idBorrar'];
+
+			//*****************************************************************************************************
+			// se consulta la propiedad para eliminar las fotos guardadas en el server antes de borrar el registro
+			//*****************************************************************************************************
+			$busca = Datos::mdlBuscaPropiedad($_GET['idBorrar'], "propiedades");
+
+			$fotos = json_decode($busca["fotos"], true);
+
+			if (!empty($busca['fotoPrincipal']) && file_exists($busca['fotoPrincipal'])) {
+		        unlink($busca['fotoPrincipal']);
+		    }
+			if (!empty($fotos['foto1']) && file_exists('views/img/propiedades/'.$fotos['foto1'])) {
+		        unlink('views/img/propiedades/'.$fotos['foto1']);
+		    }
+		    if (!empty($fotos['foto2']) && file_exists('views/img/propiedades/'.$fotos['foto2'])) {
+		        unlink('views/img/propiedades/'.$fotos['foto2']);
+		    }
+		    if (!empty($fotos['foto3']) && file_exists('views/img/propiedades/'.$fotos['foto3'])) {
+		        unlink('views/img/propiedades/'.$fotos['foto3']);
+		    }
+		    if (!empty($fotos['foto4']) && file_exists('views/img/propiedades/'.$fotos['foto4'])) {
+		        unlink('views/img/propiedades/'.$fotos['foto4']);
+		    }
+		    if (!empty($fotos['foto5']) && file_exists('views/img/propiedades/'.$fotos['foto5'])) {
+		        unlink('views/img/propiedades/'.$fotos['foto5']);
+		    }
+
+
+			//*****************************************************************************************************
+
+
+
+
+
 			$respuesta = Datos::mdlBorrarPropiedad($datosController,"propiedades");
 			if ($respuesta == "success"){
 				echo '<script>
