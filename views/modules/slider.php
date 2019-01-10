@@ -43,7 +43,7 @@ shuffle($rand);
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div class="text-left">
-                            <h1>Tiessen | Bienes Raices</h1>
+                            <h1>Thiessen | Bienes Raices</h1>
                             <p>
                                 Conoce nuestro agentes de ventas
                             </p>

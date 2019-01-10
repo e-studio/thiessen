@@ -33,33 +33,13 @@
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="views/img/favicon.ico" type="image/x-icon" >
 
-    <!-- Google fonts
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,300,700">-->
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="views/css/ie10-viewport-bug-workaround.css">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script  src="views/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script  src="js/html5shiv.min.js"></script>
-    <script  src="js/respond.min.js"></script>
-    <![endif]-->
+     <script  src="views/js/ie-emulation-modes-warning.js"></script>
 
     <!-- SweetAlert 2 -->
     <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
-
-<!--    <!~~ DropZone Images ~~>
-    <!~~ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> ~~>
-    <link rel="stylesheet" href="views/css/styles.css">
-    <!~~ <script src="https://code.jquery.com/jquery-3.2.1.js"></script> ~~>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="views/js/jquery-ui.min.js"></script>-->
-
 
 
 </head>
@@ -78,6 +58,30 @@
             include "modules/login.php";
         }
     ?>
+
+  <!-- Delete Modal-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+            <h4 class="modal-title" id="deleteModalLabel">Confirme</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <h5>Seguro que desea borrar este registro ?</h5>
+            <br><br>
+
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger" onclick="borraOrden()"> Si, Borrar</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 <script src="views/js/jquery-2.2.0.min.js"></script>
 <script src="views/js/popper.min.js"></script>
@@ -104,8 +108,6 @@
 <script  src="views/js/fotos.js"></script>
 
 <script  src="views/js/validarIngreso.js"></script>
-
-
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="views/js/ie10-viewport-bug-workaround.js"></script>
 <!-- Custom javascript -->

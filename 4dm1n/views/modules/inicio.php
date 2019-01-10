@@ -73,17 +73,7 @@ include "navAdmin.php";
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="ui-item bg-dark">
-                <div class="left">
-                    <h4>42</h4>
-                    <p>Bookmarked</p>
-                </div>
-                <div class="right">
-                    <i class="fa fa-heart-o"></i>
-                </div>
-            </div>
-        </div> -->
+
     </div> <!--Tarjetas de Inicio -->
 
 

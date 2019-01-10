@@ -624,8 +624,13 @@ class MvcController{
             </td>
             <td class="expire-date">'.$item["titulo"].'</td>
             <td class="action">
-                <a href="index.php?action=edita-usuario&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="index.php?action=mis-usuarios&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
+                <a href="index.php?action=edita-usuario&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Editar</a>';
+
+                if ($item['id'] != $_SESSION['id']){
+                echo '<a href="#deleteModal" data-toggle="modal" data-target="#deleteModal" data-borrar="'.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Borrar</a>
+                <a href="index.php?action=mis-usuarios&idBorrar='.$item["id"].'"><button id="'.$item["id"].'" name="'.$item["id"].'" hidden>X</button></a>';
+				}
+		echo '
             </td>
         </tr>';
 		}
@@ -658,8 +663,13 @@ class MvcController{
             <td class="action">
 
 				<a href="" class="masFotos" propiedad='.$item["id"].' ><i class="fa fa-picture-o"></i> Mas Fotos</a>
-                <a href="index.php?action=edita-propiedad&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="index.php?action=mis-propiedades&idBorrar='.$item["id"].'" class="delete"><i class="fa fa-remove"></i> Delete</a>
+                <a href="index.php?action=edita-propiedad&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Editar</a>
+
+
+                <a href="#deleteModal" data-toggle="modal" data-target="#deleteModal" data-borrar="'.$item["id"].'" class="delete"><i class="fa fa-remove"></i>Borrar</a>
+
+                <a href="index.php?action=mis-propiedades&idBorrar='.$item["id"].'"><button id="'.$item["id"].'" name="'.$item["id"].'" hidden>X</button></a>
+
             </td>
         </tr>';
 		}
