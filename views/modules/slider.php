@@ -66,14 +66,16 @@ shuffle($rand);
     </div>
 
     <!-- Search Section start -->
-    <!--<div class="search-section d-none d-xl-block d-lg-block" id="search-style-2">
+    <div class="search-section d-none d-xl-block d-lg-block" id="search-style-2">
         <div class="container">
+
             <div class="search-section-area ssa2">
+                <h4>Busqueda Avanzada</h4>
                 <div class="search-area-inner">
                     <div class="search-contents">
-                         <form method="GET">
+                         <form action="busqueda.php" method="POST">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="form-area">
                                             <option>Form Area</option>
@@ -83,31 +85,27 @@ shuffle($rand);
                                             <option>1400</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="any-status">
-                                            <option>Any Status</option>
-                                            <option>For Rent</option>
-                                            <option>For Sale</option>
+                                        <select class="selectpicker search-fields" name="status">
+                                            <option>Venta</option>
+                                            <option>Renta</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="all-type">
-                                            <option>All Type</option>
-                                            <option>Apartments</option>
-                                            <option>Shop</option>
-                                            <option>Restaurant</option>
-                                            <option>Villa</option>
+                                        <select class="selectpicker search-fields" name="tipo">
+                                            <option>Casas</option>
+                                            <option>Terrenos</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bedrooms">
-                                            <option>Bedrooms</option>
+                                        <select class="selectpicker search-fields" name="recamaras">
+                                            <option>Recamaras</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -119,23 +117,50 @@ shuffle($rand);
                             <div class="row">
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bathrooms">
-                                            <option>Bathrooms</option>
+                                        <select class="selectpicker search-fields" name="banos">
+                                            <option>Ba&ntilde;os</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="location">
-                                            <option>location</option>
-                                            <option>United States</option>
-                                            <option>American Samoa</option>
-                                            <option>Belgium</option>
-                                            <option>Canada</option>
+                                        <select class="selectpicker search-fields" name="estado">
+                                            <option value="Aguascalientes">Aguascalientes</option>
+                                            <option value="Baja California">Baja California</option>
+                                            <option value="Baja California Sur">Baja California Sur</option>
+                                            <option value="Campeche">Campeche</option>
+                                            <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+                                            <option value="Colima">Colima</option>
+                                            <option value="Chiapas">Chiapas</option>
+                                            <option value="Chihuahua" selected>Chihuahua</option>
+                                            <!--<option value="9">Distrito Federal</option>
+                                            <option value="10">Durango</option>
+                                            <option value="11">Guanajuato</option>
+                                            <option value="12">Guerrero</option>
+                                            <option value="13">Hidalgo</option>
+                                            <option value="14">Jalisco</option>
+                                            <option value="15">México</option>
+                                            <option value="16">Michoacán de Ocampo</option>
+                                            <option value="17">Morelos</option>
+                                            <option value="18">Nayarit</option>
+                                            <option value="19">Nuevo León</option>
+                                            <option value="20">Oaxaca</option>
+                                            <option value="21">Puebla</option>
+                                            <option value="22">Querétaro</option>
+                                            <option value="23">Quintana Roo</option>
+                                            <option value="24">San Luis Potosí</option>
+                                            <option value="25">Sinaloa</option>
+                                            <option value="26">Sonora</option>
+                                            <option value="27">Tabasco</option>
+                                            <option value="28">Tamaulipas</option>
+                                            <option value="29">Tlaxcala</option>
+                                            <option value="30">Veracruz de Ignacio de la Llave</option>
+                                            <option value="31">Yucatán</option>
+                                            <option value="32">Zacatecas</option>-->
                                         </select>
                                     </div>
                                 </div>
@@ -147,7 +172,7 @@ shuffle($rand);
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
-                                        <button class="search-button">Search</button>
+                                        <button type="submit" name="buscar" class="search-button">Buscar</button>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +181,7 @@ shuffle($rand);
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 </div><!-- Banner end -->
 
 

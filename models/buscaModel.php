@@ -29,6 +29,35 @@ class buscaModels{
 
 	}
 
+	public function busquedaEspecifica($tabla, $datos){
+
+	/*	$where="";
+		if ( $datos["recamaras"] != "Recamaras"){
+			$where += "AND habitaciones = :recamaras";
+		}
+		if ( $datos["banos"] != "Baños"){
+			$where += "AND habitaciones = :banos";
+		}*/
+//status = :statud AND categoria = :tipo AND estado = :estado $where
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE (precio BETWEEN :min AND :max) AND (status = :status) ORDER BY destacada DESC, fechaRegistro DESC");
+
+
+		 $stmt->bindParam(":status", $datos["status"], PDO::PARAM_STR);
+		// $stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+		// $stmt->bindParam(":recamaras", $datos["recamaras"], PDO::PARAM_STR);
+		// $stmt->bindParam(":banos", $datos["banos"], PDO::PARAM_STR);
+		// $stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":min", $datos["min"], PDO::PARAM_STR);
+		$stmt->bindParam(":max", $datos["max"], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
 	public function buscaAgentes($tabla){
 
 		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");

@@ -283,6 +283,95 @@ class propiedades{
 
 	}
 
+
+    public function buscaPropiedades(){
+
+            $datos = array("status" => $_POST["status"],
+                           "tipo" => $_POST["tipo"],
+                           // "recamaras" => $_POST["recamaras"],
+                           // "banos" => $_POST["banos"],
+                           //"password" => $encriptar,
+                           "estado" => $_POST["estado"],
+                           "min" => $_POST["min_price"],
+                           "max" => $_POST["max_price"]);
+
+            $respuesta = buscaModels::busquedaEspecifica("propiedades", $datos);
+            foreach ($respuesta as $row => $item){
+
+            echo'<div class="property-box-2" >
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5 col-pad">
+                            <div class="property-thumbnail">
+                                <a href="properties-details.html" class="property-img">
+                                    <img src="4dm1n/'.$item["fotoPrincipal"].'" alt="properties" class="img-fluid">';
+
+                                    if ($item["destacada"] == 1){
+                                        echo '<div class="listing-badges">
+                                        <span class="featured">Reciente</span>
+                                    </div>';
+                                    }
+
+
+
+                                   echo '<div class="price-box"><span>$'.number_format($item["precio"]).' </span> '.$item["status"].'</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-pad">
+                            <div class="detail">
+                                <div class="hdg">
+                                   ID: '.$item["id"].'<br>
+                                    <h1 class="title">
+                                        <a href="detalles-propiedad.php?id='.$item["id"].'">'.$item["titulo"].'</a>
+                                    </h1>
+
+                                    <h5 class="location">
+                                        <a href="properties-details.html">
+                                            <i class="flaticon-pin"></i>'.$item["direccion"].', '.$item["estado"].'
+                                        </a>
+                                    </h5>
+                                </div>
+                                <ul class="facilities-list clearfix">
+                                    <li>
+                                        <span>Construcci&oacute;n</span>'.$item["areaConstruccion"].'
+                                    </li>
+                                    <li>
+                                        <span>Terreno</span>'.$item["areaTerreno"].'
+                                    </li>
+                                    <li>
+                                        <span>Habitaciones</span> '.$item["habitaciones"].'
+                                    </li>
+                                    <li>
+                                        <span>Ba&ntilde;os</span> '.$item["banos"].'
+                                    </li>
+                                    <li>
+                                        <span>Tipo</span> '.$item["status"].'
+                                    </li>
+                                </ul><div><br><br></div>
+                                <div class="footer">
+                                    <a href="#" tabindex="0">
+                                        <i class="flaticon-people"></i> Jhon Doe
+                                    </a>
+                                    <span>
+                                          <i class="flaticon-calendar"></i>'.$item["fechaRegistro"].'
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- row -->
+                </div>  <!-- property-box-2 -->';
+
+
+            }//foreach
+
+    }
+
+
+
+
+
+
+
 public function todasPropiedades(){
 
         $respuesta = buscaModels::buscaPropiedades("propiedades");
