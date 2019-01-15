@@ -129,6 +129,18 @@ class Datos extends Conexion{
 
 	}
 
+	# LISTA DE VENDEDORES PARA REGISTRO DE PROPIEDAD
+	#-------------------------------------
+
+	public function mdlVendedores($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT id, nombre FROM $tabla");
+		$stmt->execute();
+		return $stmt->fetchAll();
+		$stmt->close();
+
+	}
+
 
 
 

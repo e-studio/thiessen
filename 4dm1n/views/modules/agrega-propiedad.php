@@ -126,7 +126,10 @@ include "navAdmin.php";
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Vendedor Asignado</label>
-                                <input type="number" class="form-control" name="agenteID"  placeholder="Agente que vende esta prop." value="1" >
+                                <select class="selectpicker search-fields" name="agenteID" >
+                                    <?php $vendedores = new MvcController(); $vendedores -> ctlBuscaVendedor();?>
+                                </select>
+
                             </div>
                         </div>
 

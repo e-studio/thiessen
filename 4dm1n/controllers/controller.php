@@ -23,6 +23,35 @@ class MvcController{
 
 
 
+	#-------------------------------------
+	#Busca los vendedores existentes para captura de propiedades
+	#------------------------------------
+	public function ctlBuscaVendedores(){
+
+		$respuesta = Datos::mdlVendedores("usuarios");
+
+		foreach ($respuesta as $row => $item){
+			echo  '<option value="'.$item["id"].'">'.$item["nombre"].'</option>';
+		}
+	}
+
+	#-------------------------------------
+	#Busca los vendedores existentes para captura de propiedades y selecciona al que recibe como parametro
+	#------------------------------------
+	public function ctlBuscaVendedor($vendedor){
+
+		$respuesta = Datos::mdlVendedores("usuarios");
+
+		foreach ($respuesta as $row => $item){
+
+			if ($item["id"] == $vendedor) echo  '<option value="'.$item["id"].'" selected>'.$item["nombre"].'</option>';
+
+			else echo  '<option value="'.$item["id"].'">'.$item["nombre"].'</option>';
+		}
+	}
+
+
+
 
 	/*=============================================
 	REGISTRO DE USUARIO

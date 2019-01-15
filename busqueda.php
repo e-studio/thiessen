@@ -11,7 +11,7 @@
 <div class="sub-banner overview-bgi">
     <div class="container">
         <div class="breadcrumb-area">
-            <h1>Resultado de Busqueda</h1>
+            <h1>Resultado de Busqueda   </h1>
         </div>
     </div>
 </div>

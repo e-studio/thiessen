@@ -234,7 +234,7 @@ class propiedades{
 			echo '<div class="slick-slide-item">
                     <div class="property-box">
                         <div class="property-thumbnail">
-                            <a href="properties-details.html" class="property-img">
+                            <a href="detalles-propiedad.php?id='.$item["id"].'"" class="property-img">
                                 <div class="listing-badges">
                                     <span class="featured">Reciente</span>
                                 </div>
@@ -269,8 +269,8 @@ class propiedades{
                                     </li>
                                 </ul><div><br><br></div>
                         <div class="footer">
-                            <a href="#">
-                                <i class="flaticon-people"></i> Jhon Doe
+                            <a href="detalles-agente.php?id='.$item["idAgente"].'" tabindex="0">
+                                <i class="flaticon-people"></i> '.$item["nombre"].'
                             </a>
                             <span>
                                 <i class="flaticon-calendar"></i>'.$item["fechaRegistro"].'
@@ -374,14 +374,14 @@ class propiedades{
 
 public function todasPropiedades(){
 
-        $respuesta = buscaModels::buscaPropiedades("propiedades");
+        $respuesta = buscaModels::buscaPropiedadesDetalle("propiedades");
         foreach ($respuesta as $row => $item){
 
             echo'<div class="property-box-2" >
                     <div class="row">
                         <div class="col-lg-4 col-md-5 col-pad">
                             <div class="property-thumbnail">
-                                <a href="properties-details.html" class="property-img">
+                                <a href="detalles-propiedad.php?id='.$item["id"].'"" class="property-img">
                                     <img src="4dm1n/'.$item["fotoPrincipal"].'" alt="properties" class="img-fluid">';
 
                                     if ($item["destacada"] == 1){
@@ -428,8 +428,8 @@ public function todasPropiedades(){
                                     </li>
                                 </ul><div><br><br></div>
                                 <div class="footer">
-                                    <a href="#" tabindex="0">
-                                        <i class="flaticon-people"></i> Jhon Doe
+                                    <a href="detalles-agente.php?id='.$item["idAgente"].'" tabindex="0">
+                                        <i class="flaticon-people"></i> '.$item["nombre"].'
                                     </a>
                                     <span>
                                           <i class="flaticon-calendar"></i>'.$item["fechaRegistro"].'

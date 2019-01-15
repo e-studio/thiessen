@@ -30,7 +30,7 @@
 	                $propiedades -> todasPropiedades();
 	            ?>
 
-                <!-- Page navigation start -->
+                <!-- Page navigation start
                 <div class="pagination-box hidden-mb-45 text-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -45,7 +45,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
