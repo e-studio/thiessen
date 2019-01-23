@@ -296,7 +296,7 @@ class MvcController{
 
 				$tabla = "propiedades";
 
-				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
+				$caract = array('Estacionamiento' => $_POST["estacionamiento"], 'Aire Acondicionado' => $_POST["AC"], 'Calefaccion Piso Radiante' => $_POST["piso"], 'Garage' => $_POST["garage"], 'Piscina' => $_POST["piscina"], 'Lavanderia' => $_POST["lavanderia"], 'Calefaccion' => $_POST["calefaccion"], 'Alarma' => $_POST["alarma"], 'Parque cercano' => $_POST["parque"], 'Ventanas doble vidrio' => $_POST["ventanas"]);
 				//echo '<script>alert("Foto :'.$ruta.'");</script>';
 
 				$datos = array("id" => $_POST["id"],
@@ -464,7 +464,7 @@ class MvcController{
 
 				$tabla = "propiedades";
 
-				$caract = array('estacionamiento' => $_POST["estacionamiento"], 'AC' => $_POST["AC"], 'piscina' => $_POST["piscina"], 'lavanderia' => $_POST["lavanderia"], 'calefaccion' => $_POST["calefaccion"], 'alarma' => $_POST["alarma"], 'parque' => $_POST["parque"], 'ventanas' => $_POST["ventanas"]);
+				$caract = array('Estacionamiento' => $_POST["estacionamiento"], 'Aire Acondicionado' => $_POST["AC"], 'Calefaccion Piso Radiante' => $_POST["piso"], 'Garage' => $_POST["garage"], 'Piscina' => $_POST["piscina"], 'Lavanderia' => $_POST["lavanderia"], 'Calefaccion' => $_POST["calefaccion"], 'Alarma' => $_POST["alarma"], 'Parque cercano' => $_POST["parque"], 'Ventanas doble vidrio' => $_POST["ventanas"]);
 
 				if (is_null($_POST["destacada"]) || empty($_POST["destacada"]))
 					{

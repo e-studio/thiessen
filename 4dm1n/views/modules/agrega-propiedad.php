@@ -112,14 +112,14 @@ include "navAdmin.php";
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
-                                <label>Area de Terreno</label>
-                                <input type="number" name="mtsTerreno" class="form-control" placeholder="Mts Terreno">
+                                <label>Area de Terreno &nbsp;&nbsp;&nbsp;( mts<sup>2</sup> )</label>
+                                <input type="number" name="mtsTerreno" class="form-control" placeholder="Medidas de Terreno">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
-                                <label>Area de Construccion</label>
-                                <input type="number" name="mtsConstruccion" class="form-control" placeholder="Mts Construccion">
+                                <label>Area de Construccion &nbsp;&nbsp;&nbsp;( pies<sup>2</sup> )</label>
+                                <input type="number" name="mtsConstruccion" class="form-control" placeholder="Medidas de Construccion">
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@ include "navAdmin.php";
                             <div class="form-group">
                                 <label>Vendedor Asignado</label>
                                 <select class="selectpicker search-fields" name="agenteID" >
-                                    <?php $vendedores = new MvcController(); $vendedores -> ctlBuscaVendedor();?>
+                                    <?php $vendedores = new MvcController(); $vendedores -> ctlBuscaVendedores();?>
                                 </select>
 
                             </div>
@@ -243,6 +243,24 @@ include "navAdmin.php";
                             <input id="AC" type="checkbox" name="AC" value="1">
                             <label for="AC">
                                 Aire Acondicionado
+                            </label>
+                        </div>
+                </div>
+
+                <div class="col-md-6">
+                        <div class="checkbox checkbox-theme checkbox-circle">
+                            <input id="piso" type="checkbox" name="piso" value="1">
+                            <label for="piso">
+                                Calefaccion Piso Radiante
+                            </label>
+                        </div>
+                </div>
+
+                <div class="col-md-6">
+                        <div class="checkbox checkbox-theme checkbox-circle">
+                            <input id="garage" type="checkbox" name="garage" value="1">
+                            <label for="garage">
+                                Garage
                             </label>
                         </div>
                 </div>

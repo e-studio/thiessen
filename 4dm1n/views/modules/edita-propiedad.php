@@ -111,13 +111,13 @@ include "navAdmin.php";
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
-                                <label>Area de Terreno</label>
+                                <label>Area de Terreno &nbsp;&nbsp;&nbsp;( mts<sup>2</sup> )</label>
                                 <input type="number" name="mtsTerreno" class="form-control" placeholder="Mts Terreno" value="<?php echo $busqueda["areaTerreno"]; ?>">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group number">
-                                <label>Area de Construccion</label>
+                                <label>Area de Construccion &nbsp;&nbsp;&nbsp;( pies<sup>2</sup> )</label>
                                 <input type="number" name="mtsConstruccion" class="form-control" placeholder="Mts Construccion" value="<?php echo $busqueda["areaConstruccion"]; ?>">
                             </div>
                         </div>
@@ -227,7 +227,7 @@ include "navAdmin.php";
             <div class="row pad-20">
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="estacionamiento" name="estacionamiento" type="checkbox" value="1" <?php if ($caract['estacionamiento']=="1") echo 'checked'; ?>>
+                        <input id="estacionamiento" name="estacionamiento" type="checkbox" value="1" <?php if ($caract['Estacionamiento']=="1") echo 'checked'; ?>>
                         <label for="estacionamiento">
                             Estacionamiento
                         </label>
@@ -236,7 +236,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                         <div class="checkbox checkbox-theme checkbox-circle">
-                            <input id="AC" type="checkbox" name="AC" value="1" <?php if ($caract['AC']=="1") echo 'checked'; ?>>
+                            <input id="AC" type="checkbox" name="AC" value="1" <?php if ($caract['Aire Acondicionado']=="1") echo 'checked'; ?>>
                             <label for="AC">
                                 Aire Acondicionado
                             </label>
@@ -244,8 +244,26 @@ include "navAdmin.php";
                 </div>
 
                 <div class="col-md-6">
+                        <div class="checkbox checkbox-theme checkbox-circle">
+                            <input id="piso" type="checkbox" name="piso" value="1" <?php if ($caract['Calefaccion Piso Radiante']=="1") echo 'checked'; ?>>
+                            <label for="piso">
+                                Calefacci&oacute;n Piso Radiante
+                            </label>
+                        </div>
+                </div>
+
+                <div class="col-md-6">
+                        <div class="checkbox checkbox-theme checkbox-circle">
+                            <input id="garage" type="checkbox" name="garage" value="1" <?php if ($caract['Garage']=="1") echo 'checked'; ?>>
+                            <label for="garage">
+                                Garage
+                            </label>
+                        </div>
+                </div>
+
+                <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="piscina" type="checkbox" name="piscina" value="1" <?php if ($caract['piscina']=="1") echo 'checked'; ?>>
+                        <input id="piscina" type="checkbox" name="piscina" value="1" <?php if ($caract['Piscina']=="1") echo 'checked'; ?>>
                         <label for="piscina">
                             Piscina
                         </label>
@@ -254,7 +272,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="lavanderia" type="checkbox" name="lavanderia" value="1" <?php if ($caract['lavanderia']=="1") echo 'checked'; ?>>
+                        <input id="lavanderia" type="checkbox" name="lavanderia" value="1" <?php if ($caract['Lavanderia']=="1") echo 'checked'; ?>>
                         <label for="lavanderia">
                             Lavander&iacute;a
                         </label>
@@ -263,7 +281,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="calefaccion" type="checkbox" name="calefaccion" value="1" <?php if ($caract['calefaccion']=="1") echo 'checked'; ?>>
+                        <input id="calefaccion" type="checkbox" name="calefaccion" value="1" <?php if ($caract['Calefaccion']=="1") echo 'checked'; ?>>
                         <label for="calefaccion">
                             Calefacci&oacute;n Central
                         </label>
@@ -272,7 +290,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="alarma" type="checkbox" name="alarma" value="1" <?php if ($caract['alarma']=="1") echo 'checked'; ?>>
+                        <input id="alarma" type="checkbox" name="alarma" value="1" <?php if ($caract['Alarma']=="1") echo 'checked'; ?>>
                         <label for="alarma">
                             Alarma
                         </label>
@@ -281,7 +299,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="parque" type="checkbox" name="parque" value="1" <?php if ($caract['parque']=="1") echo 'checked'; ?>>
+                        <input id="parque" type="checkbox" name="parque" value="1" <?php if ($caract['Parque cercano']=="1") echo 'checked'; ?>>
                         <label for="parque">
                             Parque / Areas Verdes
                         </label>
@@ -290,7 +308,7 @@ include "navAdmin.php";
 
                 <div class="col-md-6">
                     <div class="checkbox checkbox-theme checkbox-circle">
-                        <input id="ventanas" type="checkbox" name="ventanas" value="1" <?php if ($caract['ventanas']=="1") echo 'checked'; ?>>
+                        <input id="ventanas" type="checkbox" name="ventanas" value="1" <?php if ($caract['Ventanas doble vidrio']=="1") echo 'checked'; ?>>
                         <label for="ventanas">
                             Ventanas Doble Vidrio
                         </label>

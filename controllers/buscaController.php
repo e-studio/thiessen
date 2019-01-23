@@ -161,8 +161,8 @@ class propiedades{
                     <h3 class="heading-2">Distribuci&oacute;n</h3>
                     <table>
                         <tbody><tr>
-                            <td><strong>Terreno</strong></td>
-                            <td><strong>Construcci&oacute;n</strong></td>
+                            <td><strong>Terreno </strong>&nbsp;&nbsp;&nbsp; (mts<sup>2</sup>)</td>
+                            <td><strong>Construcci&oacute;n </strong>&nbsp;&nbsp;&nbsp; (pies<sup>2</sup>)</td>
                             <td><strong>Habitaciones</strong></td>
                             <td><strong>Ba&ntilde;os</strong></td>
 
@@ -238,7 +238,7 @@ class propiedades{
                                 <div class="listing-badges">
                                     <span class="featured">Reciente</span>
                                 </div>
-                                <div class="price-box"><span>$'.number_format($item["precio"]).'</span></div>
+                                <div class="price-box"><a href="detalles-propiedad.php?id='.$item["id"].'""><span>$'.number_format($item["precio"]).'</span></a></div>
                                 <img class="d-block w-100" src="4dm1n/'.$item["fotoPrincipal"].'" alt="properties">
                             </a>
                         </div>
@@ -249,9 +249,9 @@ class propiedades{
                             </h1>
 
                             <div class="location">
-                                <a href="properties-details.html">
+
                                     <i class="flaticon-pin"></i>'.$item["direccion"].',
-                                </a>
+
                             </div>
                         </div>
                         <ul class="facilities-list clearfix">
