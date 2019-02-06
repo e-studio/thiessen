@@ -13,8 +13,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 * en la base de datos, con la función de mysql TIMEDIFF(fecha de inicio, fecha final)
 
 */
-
-$sql="select ip, TIMEDIFF(NOW(), fecha), fecha, num_visitas from contador where ip='$ip'";
+$sql="select ip, TIMEDIFF(NOW(), fecha) as fecha, num_visitas from contador where ip='$ip'";
 
 //Ejecutamos la instrucción SQL
 
@@ -89,7 +88,7 @@ $rs = $conn->query($sql);
 //$rs=mysql_query($sql) or die("Problemas al ejecutar select SQL ".mysql_error());
 
 $fila = $rs->fetch(PDO::FETCH_ASSOC);   //Almacenanos el resultado de la consulta en un arreglo
-//$fila=mysql_fetch_array($rs); 
+//$fila=mysql_fetch_array($rs);
 
 $num_visitas = $fila['suma']; //Número de visitas
 
