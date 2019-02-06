@@ -74,3 +74,11 @@
     </div>
 </div>
 <!-- Sub footer end -->
+        <?php
+          ob_start();
+          if (is_readable('4dm1n/views/contador.php')) include('4dm1n/views/contador.php');
+          else echo "not readable";
+          ob_end_clean();
+          ob_flush();
+          //echo "Visitas: ".$num_visitas;
+          ?>

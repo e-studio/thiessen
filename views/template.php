@@ -2,19 +2,20 @@
 <?php include "modules/topHead.php"; ?>
 
 <body>
-	<!-- <div class="page_loader"></div> -->
+
+		<?php
+		 include "modules/encabezado.php";
+
+		 include "modules/slider.php";
+
+		 include "modules/recientes.php";
+
+		 include "modules/agentes.php";
+
+		 include "modules/footer.php";
 
 
-
-		<?php include "modules/encabezado.php"; ?>
-
-		<?php include "modules/slider.php"; ?>
-
-		<?php include "modules/recientes.php"; ?>
-
-		<?php include "modules/agentes.php"; ?>
-
-		<?php include "modules/footer.php"; ?>
+		?>
 
 
 <script src="views/js/jquery-2.2.0.min.js"></script>
