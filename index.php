@@ -9,6 +9,3 @@ require_once "controllers/gestorArticulos.php";
 
 $template = new TemplateController();
 $template -> template();
-
-
-// template se deja abierto

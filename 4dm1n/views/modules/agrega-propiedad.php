@@ -85,6 +85,11 @@ include "navAdmin.php";
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                             </div>
                         </div>
@@ -97,6 +102,10 @@ include "navAdmin.php";
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
                                 </select>
                             </div>
                         </div>
@@ -145,7 +154,20 @@ include "navAdmin.php";
     <h4 class="bg-grea-3">Informaci&oacute;n Detallada</h4>
         <div class="row pad-20">
             <div class="col-lg-12">
-                <textarea name="detalles" class="form-control" placeholder="Descripcion de la propiedad"></textarea>
+                <textarea name="detalles" class="form-control" placeholder="Descripcion de la propiedad" rows="6"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+         <div class="dashboard-list">
+    <h4 class="bg-grea-3">Condiciones de Venta</h4>
+        <div class="row pad-20">
+            <div class="col-lg-12">
+                <textarea name="condVenta" class="form-control" placeholder="Condiciones de Venta" rows="4"></textarea>
             </div>
         </div>
     </div>

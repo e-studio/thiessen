@@ -7,10 +7,10 @@ $password = "";
 
 
 //conexion Server
-// $bd = "multie5_thiessen";
-// $servername = "localhost";
-// $username = "multie5_thiessen";
-// $password = "d!)8)=69,7&U";
+ // $bd = "multie5_thiessen";
+ // $servername = "localhost";
+ // $username = "multie5_thiessen";
+ // $password = "d!)8)=69,7&U";
 
 
 

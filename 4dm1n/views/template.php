@@ -72,6 +72,7 @@
           <div class="modal-body">
 
             <h5>Seguro que desea borrar este registro ?</h5>
+            <p id="descDato"></p>
             <br><br>
 
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
@@ -81,6 +82,30 @@
         </div>
       </div>
     </div>
+
+
+<!-- Datos de Venta Modal -->
+<div class="modal fade" id="datosModal" tabindex="-1" role="dialog" aria-labelledby="datosModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+            <h4 class="modal-title" id="deleteModalLabel">Condiciones de Venta</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span id="contnt" name="contnt"></span>
+            <br><br>
+
+            <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+       
+
 
 
 <script src="views/js/jquery-2.2.0.min.js"></script>

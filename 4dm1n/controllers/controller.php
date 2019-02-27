@@ -313,6 +313,7 @@ class MvcController{
 					           "ciudad" => $_POST["ciudad"],
 					           "estado" => $_POST["estado"],
 					           "CP" => $_POST["CP"],
+					           "condiciones" => $_POST["condVenta"],
 					           "detalles" => $_POST["detalles"],
 					           "caract" => json_encode($caract),
 					           "agenteID" => $_POST["agenteID"],
@@ -489,6 +490,7 @@ class MvcController{
 					           "estado" => $_POST["estado"],
 					           "CP" => $_POST["CP"],
 					           "detalles" => $_POST["detalles"],
+					           "condiciones" => $_POST["condiciones"],
 					           "caract" => json_encode($caract),
 					           "agenteID" => $_POST["agenteID"],
 					           "fotoPrincipal"=>$ruta,
@@ -680,6 +682,7 @@ class MvcController{
 
 		echo '<tr class="responsive-table">
             <td class="listing-photoo">
+            	<a href="#datosModal" data-toggle="modal" href="#datosModal" data-desc="'.$item["condVenta"].'" class="datosVenta">
                 <img src="'.$item["fotoPrincipal"].'" alt="listing-photo" class="img-fluid" width="120">
             </td>
             <td class="title-container">
@@ -695,7 +698,7 @@ class MvcController{
                 <a href="index.php?action=edita-propiedad&idEditar='.$item["id"].'"><i class="fa fa-pencil"></i> Editar</a>
 
 
-                <a href="#deleteModal" data-toggle="modal" data-target="#deleteModal" data-borrar="'.$item["id"].'" class="delete"><i class="fa fa-remove"></i>Borrar</a>
+                <a href="#deleteModal" data-toggle="modal" data-target="#deleteModal" data-borrar="'.$item["id"].'" data-desc="Descripcion" class="delete"><i class="fa fa-remove"></i>Borrar</a>
 
                 <a href="index.php?action=mis-propiedades&idBorrar='.$item["id"].'"><button id="'.$item["id"].'" name="'.$item["id"].'" hidden>X</button></a>
 

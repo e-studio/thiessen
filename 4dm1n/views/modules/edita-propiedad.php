@@ -83,6 +83,11 @@ include "navAdmin.php";
                                     <option value="3" <?php if ($busqueda['habitaciones']==3) echo 'selected'; ?> >3</option>
                                     <option value="4" <?php if ($busqueda['habitaciones']==4) echo 'selected'; ?> >4</option>
                                     <option value="5" <?php if ($busqueda['habitaciones']==5) echo 'selected'; ?> >5</option>
+                                    <option value="6" <?php if ($busqueda['banos']==6) echo 'selected'; ?> >6</option>
+                                    <option value="7" <?php if ($busqueda['banos']==7) echo 'selected'; ?> >7</option>
+                                    <option value="8" <?php if ($busqueda['banos']==8) echo 'selected'; ?> >8</option>
+                                    <option value="9" <?php if ($busqueda['banos']==9) echo 'selected'; ?> >9</option>
+                                    <option value="10" <?php if ($busqueda['banos']==10) echo 'selected'; ?> >10</option>
                                 </select>
                             </div>
                         </div>
@@ -96,6 +101,9 @@ include "navAdmin.php";
                                     <option value="3" <?php if ($busqueda['banos']==3) echo 'selected'; ?> >3</option>
                                     <option value="4" <?php if ($busqueda['banos']==4) echo 'selected'; ?> >4</option>
                                     <option value="5" <?php if ($busqueda['banos']==5) echo 'selected'; ?> >5</option>
+                                    <option value="6" <?php if ($busqueda['banos']==6) echo 'selected'; ?> >6</option>
+                                    <option value="7" <?php if ($busqueda['banos']==7) echo 'selected'; ?> >7</option>
+                                    <option value="8" <?php if ($busqueda['banos']==8) echo 'selected'; ?> >8</option>
                                 </select>
                             </div>
                         </div>
@@ -145,7 +153,20 @@ include "navAdmin.php";
     <h4 class="bg-grea-3">Informaci&oacute;n Detallada</h4>
         <div class="row pad-20">
             <div class="col-lg-12">
-                <textarea name="detalles" class="form-control" placeholder="Descripcion de la propiedad"><?php echo $busqueda["detalles"]; ?></textarea>
+                <textarea name="detalles" class="form-control" placeholder="Descripcion de la propiedad" rows="6"><?php echo $busqueda["detalles"]; ?></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+         <div class="dashboard-list">
+    <h4 class="bg-grea-3">Condiciones de Venta</h4>
+        <div class="row pad-20">
+            <div class="col-lg-12">
+                <textarea name="condiciones" class="form-control" placeholder="Condiciones de Venta" rows="4"><?php echo $busqueda["condVenta"]; ?></textarea>
             </div>
         </div>
     </div>

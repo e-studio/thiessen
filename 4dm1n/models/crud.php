@@ -267,7 +267,7 @@ class Datos extends Conexion{
 		if ($datos["destacada"] == 1) {$dest = 1;}
 		else {$dest=0;}
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (destacada, titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotoPrincipal, detalles, caracteristicas, vendedor) VALUES (:destacada, :nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :caract, :agenteID)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (destacada, titulo, status, precio, categoria, areaTerreno, areaConstruccion, habitaciones, banos, direccion, ciudad, estado, CP, fotoPrincipal, detalles, condVenta, caracteristicas, vendedor) VALUES (:destacada, :nombre, :status, :precio, :categoria, :mtsTerreno, :mtsConstruccion, :habitaciones, :banos, :direccion, :ciudad, :estado, :CP, :foto, :detalles, :condiciones, :caract, :agenteID)");
 
 		$stmt->bindParam(":destacada", $dest, PDO::PARAM_INT);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -286,6 +286,7 @@ class Datos extends Conexion{
 		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 
 		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":condiciones", $datos["condiciones"], PDO::PARAM_STR);
 		$stmt->bindParam(":caract", $datos["caract"], PDO::PARAM_STR);
 		$stmt->bindParam(":agenteID", $datos["agenteID"], PDO::PARAM_INT);
 
@@ -314,7 +315,7 @@ class Datos extends Conexion{
 
 	static public function mdlActualizarPropiedad($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET destacada=:destacada, titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotoPrincipal=:fotoPrincipal, detalles=:detalles, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET destacada=:destacada, titulo=:nombre, status=:status, precio=:precio, categoria=:categoria, areaTerreno=:mtsTerreno, areaConstruccion=:mtsConstruccion, habitaciones=:habitaciones, banos=:banos, direccion=:direccion, ciudad=:ciudad, estado=:estado, CP=:CP, fotoPrincipal=:fotoPrincipal, detalles=:detalles, condVenta=:condiciones, caracteristicas=:caract, vendedor=:agenteID WHERE id = :id");
 
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":destacada", $datos["destacada"], PDO::PARAM_INT);
@@ -332,6 +333,7 @@ class Datos extends Conexion{
 		$stmt->bindParam(":CP", $datos["CP"], PDO::PARAM_STR);
 		$stmt->bindParam(":fotoPrincipal", $datos["fotoPrincipal"], PDO::PARAM_STR);
 		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":condiciones", $datos["condiciones"], PDO::PARAM_STR);
 		$stmt->bindParam(":caract", $datos["caract"], PDO::PARAM_STR);
 		$stmt->bindParam(":agenteID", $datos["agenteID"], PDO::PARAM_INT);
 
