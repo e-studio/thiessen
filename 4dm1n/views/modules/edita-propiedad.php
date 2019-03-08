@@ -237,6 +237,19 @@ include "navAdmin.php";
                                 </select>
                             </div>
                         </div>
+
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Latitud</label>
+                                <input type="text" class="form-control" name="latitud"  placeholder="Latitud" value="<?php echo $busqueda["latitud"]; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Longitud</label>
+                                <input type="text" class="form-control" name="longitud"  placeholder="longitud" value="<?php echo $busqueda["longitud"]; ?>">
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

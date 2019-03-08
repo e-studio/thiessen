@@ -154,7 +154,21 @@ class propiedades{
                         </div>
                     </div>
                 </div>';
-                } // if $i>0
+                } 
+
+                echo '
+                        <div class="location mb-50">
+                            <div class="map">
+                                <h3 class="headdind-2">Mapa de Ubicaci&oacute;n</h3>
+                                <div id="mapa" class="contact-map"></div>
+                            </div>
+                            <p id="titulo" hidden> '.$item["titulo"].'</p>
+                            <p id="direccion" hidden> '.$item["direccion"].'</p>
+                            <p id="latitud" hidden>'.$item["latitud"].'</p>
+                            <p id="longitud" hidden>'.$item["longitud"].'</p>
+                            <p id="precio" hidden>'.number_format($item["precio"]).'</p>
+                        </div>
+                ';
 
                 echo'<!-- Floor plans start -->
                 <div class="floor-plans mb-50">
@@ -178,6 +192,7 @@ class propiedades{
                     <img src="4dm1n/'.$item["fotoPrincipal"].'" alt="floor-plans" class="img-fluid">
                 </div>
              </div>
+
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
                     <!-- Our agent sidebar start -->
