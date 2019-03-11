@@ -383,13 +383,41 @@ class propiedades{
 
 
 
+public function propiedadesMapa(){
+    $respuesta = buscaModels::propiedadesMapa("propiedades");
 
+    $userData = array();
+
+    foreach ($respuesta as $row => $item){
+        $userData['propiedades'][] = $item;
+    }
+    
+    echo json_encode($userData);
+
+}
 
 
 
 public function todasPropiedades(){
 
         $respuesta = buscaModels::buscaPropiedadesDetalle("propiedades");
+
+
+        echo '
+                        <div class="location mb-50">
+                            <div class="map">
+                                <h3 class="headdind-2">Propiedades En Venta</h3>
+                                <div id="mapa" class="contact-map"></div>
+                            </div>
+                            
+                        </div>
+                ';
+
+
+
+
+
+
         foreach ($respuesta as $row => $item){
 
             echo'<div class="property-box-2" >

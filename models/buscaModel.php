@@ -123,6 +123,18 @@ class buscaModels{
 
 	}
 
+	public function propiedadesMapa($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT id, titulo, precio, direccion, latitud, longitud  FROM $tabla");
+
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
 
 
 

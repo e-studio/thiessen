@@ -1,6 +1,4 @@
 class UI {
-
-
   
      constructor(latitud, longitud) {
                       
@@ -10,6 +8,18 @@ class UI {
           // Iniciar el mapa
           this.mapa = this.inicializarMapa(latitud, longitud);
 
+     }
+
+     constructor(){
+
+      // Instanciar la API
+          this.api = new API();
+
+      // Crear los mapas en un grupo
+          this.markers = new L.LayerGroup(); 
+          
+          // Iniciar el mapa
+          this.mapa = this.inicializarMapa(latitud, longitud);
 
 
      }
@@ -18,9 +28,6 @@ class UI {
            
           // Inicializar y obtener la propiedad del mapa
 
-
-
-      
           const map = L.map('mapa').setView([latitud, longitud], 11);
 
           const enlaceMapa = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
