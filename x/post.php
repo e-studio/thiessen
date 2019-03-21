@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     }
     else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT id, titulo, direccion, precio, latitud, longitud  FROM propiedades");
+      $sql = $dbConn->prepare("SELECT id, titulo, direccion, precio, latitud, longitud  FROM propiedades WHERE (latitud IS NOT NULL AND latitud != '') AND (longitud IS NOT NULL AND longitud != '')");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
