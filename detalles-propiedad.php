@@ -53,7 +53,11 @@
 <script  src="views/js/jquery.scrollUp.js"></script>
 
 <script  src="views/js/jquery.magnific-popup.min.js"></script>
+<<<<<<< HEAD
 <script  src="views/js/app.js"></script>
+=======
+<script  src="views/js/app.js"></script> 
+>>>>>>> 513a8ba8f012574c8b4169dedca90f5e85402f90
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="views/js/ie10-viewport-bug-workaround.js"></script>

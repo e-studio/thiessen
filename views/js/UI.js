@@ -10,7 +10,11 @@ class UI {
 
      }
 
+<<<<<<< HEAD
     /* constructor(){
+=======
+     constructor(){
+>>>>>>> 513a8ba8f012574c8b4169dedca90f5e85402f90
 
       // Instanciar la API
           this.api = new API();
@@ -22,7 +26,11 @@ class UI {
           this.mapa = this.inicializarMapa(latitud, longitud);
 
 
+<<<<<<< HEAD
      }*/
+=======
+     }
+>>>>>>> 513a8ba8f012574c8b4169dedca90f5e85402f90
 
      inicializarMapa(latitud, longitud) {
            
