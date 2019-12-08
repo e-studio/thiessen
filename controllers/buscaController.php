@@ -9,6 +9,10 @@ class propiedades{
         $social = json_decode($item["sociales"], true);
         $fotos = json_decode($item["fotos"], true);
 
+        echo '';
+//***********************************************************************************************************************************
+
+
         echo '<!-- Properties details page start -->
 <div class="properties-details-page content-area">
     <div class="container">
@@ -17,7 +21,12 @@ class propiedades{
                 <!-- Heading properties 3 start -->
                 <div class="heading-properties-3">
                     <h1>'.$item["titulo"].'</h1>
-                    <div class="mb-30"><span class="property-price">$'.number_format($item["precio"]).'</span> <span class="rent">'.$item["status"].'</span> <span class="location"><i class="flaticon-pin"></i>'.$item["direccion"].', '.$item["ciudad"].', '.$item["estado"].' </span></div>
+                    <div class="mb-30"><span class="property-price">$'.number_format($item["precio"]).'</span> <span class="rent"';
+
+                        if($item["status"]== 'Vendida') echo 'style="background-color: #ff0000;"';
+
+
+                     echo '>'.$item["status"].'</span> <span class="location"><i class="flaticon-pin"></i>'.$item["direccion"].', '.$item["ciudad"].', '.$item["estado"].' </span></div>
                 </div>
             </div>
         </div>
@@ -25,93 +34,38 @@ class propiedades{
             <div class="col-lg-8 col-md-12">
                 <!-- main slider carousel items -->
                 <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-40">
-                    <div class="carousel-inner">';
+                    <div class="carousel-inner">
+                    <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
+                        <article class="portfolio-item pf-icons pf-illustrations clearfix">
+                            <div class="portfolio-image">
+                                <div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
+                                    <div class="flexslider">
+                                        <div class="slider-wrap">
+                                            <div><a href="portfolio-single-gallery.html"><img src="4dm1n/'.$item["fotoPrincipal"].'" alt=""></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portfolio-overlay" data-lightbox="gallery">';
 
-                    if (!empty($fotos["foto1"])){
+                                    echo '<a href="4dm1n/'.$item["fotoPrincipal"].'" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>';
+                                    $max = sizeof($fotos);
 
-                        echo'<div class="active item carousel-item" data-slide-number="1">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto1"].'" class="img-fluid" alt="slider-properties">
-                            </div>';
-                        }
+                                    for ($i=0; $i < $max; $i++){
+                                        $fotoName = 'foto'.($i+1);
+                                        if (!empty($fotos["$fotoName"])){
+                                            echo '<a href="4dm1n/views/img/propiedades/'.$fotos["$fotoName"].'" class="hidden" data-lightbox="gallery-item"></a>';
+                                        }
+                                    }
 
-                    if (!empty($fotos["foto2"])){
-
-                        echo'<div class="item carousel-item" data-slide-number="2">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto2"].'" class="img-fluid" alt="slider-properties">
-                            </div>';
-                        }
-
-                    if (!empty($fotos["foto3"])){
-
-                        echo'<div class="item carousel-item" data-slide-number="3">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto3"].'" class="img-fluid" alt="slider-properties">
-                            </div>';
-                        }
-
-                    if (!empty($fotos["foto4"])){
-
-                        echo'<div class="item carousel-item" data-slide-number="4">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto4"].'" class="img-fluid" alt="slider-properties">
-                            </div>';
-                        }
-
-                    if (!empty($fotos["foto5"])){
-
-                        echo'<div class="item carousel-item" data-slide-number="5">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto5"].'" class="img-fluid" alt="slider-properties">
-                            </div>';
-                        }
-
-
-
-                   echo'<a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                        <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
-
-                    </div>
+                                echo'</div>
+                            </div>
+                        </article>
+                    </div><!-- #portfolio end -->
+                </div>
 
 
                     <!-- main slider carousel nav controls -->
-                    <ul class="carousel-indicators smail-properties list-inline nav nav-justified">';
 
-                    if (!empty($fotos["foto1"])){
-
-                    echo'    <li class="list-inline-item active">
-                            <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#propertiesDetailsSlider">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto1"].'" class="img-fluid" alt="properties-small">
-                            </a>
-                        </li>';
-                    }
-
-                    if (!empty($fotos["foto2"])){
-                       echo' <li class="list-inline-item">
-                            <a id="carousel-selector-1" data-slide-to="1" data-target="#propertiesDetailsSlider">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto2"].'" class="img-fluid" alt="properties-small">
-                            </a>
-                        </li>';
-                    }
-                    if (!empty($fotos["foto3"])){
-                        echo '<li class="list-inline-item">
-                            <a id="carousel-selector-2" data-slide-to="2" data-target="#propertiesDetailsSlider">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto3"].'" class="img-fluid" alt="properties-small">
-                            </a>
-                        </li>';
-                    }
-                    if (!empty($fotos["foto4"])){
-                        echo '<li class="list-inline-item">
-                            <a id="carousel-selector-3" data-slide-to="3" data-target="#propertiesDetailsSlider">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto4"].'" class="img-fluid" alt="properties-small">
-                            </a>
-                        </li>';
-                    }
-                    if (!empty($fotos["foto5"])){
-                        echo '<li class="list-inline-item">
-                            <a id="carousel-selector-4" data-slide-to="4" data-target="#propertiesDetailsSlider">
-                                <img src="4dm1n/views/img/propiedades/'.$fotos["foto5"].'" class="img-fluid" alt="properties-small">
-                            </a>
-                        </li>';
-                    }
-
-                   echo '</ul>
                     <!-- main slider carousel items -->
                 </div>
 
@@ -154,7 +108,21 @@ class propiedades{
                         </div>
                     </div>
                 </div>';
-                } // if $i>0
+                }
+
+                echo '
+                        <div class="location mb-50">
+                            <div class="map">
+                                <h3 class="headdind-2">Mapa de Ubicaci&oacute;n</h3>
+                                <div id="mapa" class="contact-map"></div>
+                            </div>
+                            <p id="titulo" hidden> '.$item["titulo"].'</p>
+                            <p id="direccion" hidden> '.$item["direccion"].'</p>
+                            <p id="latitud" hidden>'.$item["latitud"].'</p>
+                            <p id="longitud" hidden>'.$item["longitud"].'</p>
+                            <p id="precio" hidden>'.number_format($item["precio"]).'</p>
+                        </div>
+                ';
 
                 echo'<!-- Floor plans start -->
                 <div class="floor-plans mb-50">
@@ -175,9 +143,9 @@ class propiedades{
                         </tr>
                         </tbody>
                     </table>
-                    <img src="4dm1n/'.$item["fotoPrincipal"].'" alt="floor-plans" class="img-fluid">
                 </div>
              </div>
+
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-right">
                     <!-- Our agent sidebar start -->
@@ -234,11 +202,21 @@ class propiedades{
 			echo '<div class="slick-slide-item">
                     <div class="property-box">
                         <div class="property-thumbnail">
-                            <a href="detalles-propiedad.php?id='.$item["id"].'"" class="property-img">
-                                <div class="listing-badges">
-                                    <span class="featured">Reciente</span>
-                                </div>
-                                <div class="price-box"><a href="detalles-propiedad.php?id='.$item["id"].'""><span>$'.number_format($item["precio"]).'</span></a></div>
+                            <a href="detalles-propiedad.php?id='.$item["id"].'"" class="property-img">';
+
+                             if ($item["status"] == 'Vendida'){
+                                echo '<div class="listing-badges">
+                                        <span class="featured" style="background-color: #ff0000;">Vendida</span>
+                                      </div>';
+                                }
+                                else{
+                                    echo '<div class="listing-badges">
+                                            <span class="featured">Reciente</span>
+                                        </div>';
+                                }
+
+
+                        echo'<div class="price-box"><a href="detalles-propiedad.php?id='.$item["id"].'""><span>$'.number_format($item["precio"]).'</span></a></div>
                                 <img class="d-block w-100" src="4dm1n/'.$item["fotoPrincipal"].'" alt="properties">
                             </a>
                         </div>
@@ -368,13 +346,41 @@ class propiedades{
 
 
 
+public function propiedadesMapa(){
+    $respuesta = buscaModels::propiedadesMapa("propiedades");
 
+    $userData = array();
+
+    foreach ($respuesta as $row => $item){
+        $userData['propiedades'][] = $item;
+    }
+
+    echo json_encode($userData);
+
+}
 
 
 
 public function todasPropiedades(){
 
         $respuesta = buscaModels::buscaPropiedadesDetalle("propiedades");
+
+
+        echo '
+                        <div class="location mb-50">
+                            <div class="map">
+                                <h3 class="headdind-2">Propiedades En Venta</h3>
+                                <div id="mapa" class="contact-map"></div>
+                            </div>
+
+                        </div>
+                ';
+
+
+
+
+
+
         foreach ($respuesta as $row => $item){
 
             echo'<div class="property-box-2" >
@@ -388,6 +394,17 @@ public function todasPropiedades(){
                                         echo '<div class="listing-badges">
                                         <span class="featured">Reciente</span>
                                     </div>';
+                                    }
+
+                                    if ($item["status"] == 'Vendida' && $item["destacada"] == 1){
+                                    echo '<div class="listing-badges">
+                                            <span class="featured" style="background-color: #ff0000;">Vendida</span>
+                                          </div>';
+                                    }
+                                    elseif ($item["status"] == 'Venta' && $item["destacada"] == 1) {
+                                        echo '<div class="listing-badges">
+                                                <span class="featured">Reciente</span>
+                                            </div>';
                                     }
 
 

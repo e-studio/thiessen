@@ -235,8 +235,8 @@ class MvcController{
 
 
 					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
-					$nuevoAncho = 730;
-					$nuevoAlto = 486;
+					$nuevoAncho = 1500;
+					$nuevoAlto = 1500;
 
 					/*=============================================
 					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
@@ -313,6 +313,8 @@ class MvcController{
 					           "ciudad" => $_POST["ciudad"],
 					           "estado" => $_POST["estado"],
 					           "CP" => $_POST["CP"],
+					           "latitud" => $_POST["latitud"],
+					           "longitud" => $_POST["longitud"],
 					           "condiciones" => $_POST["condVenta"],
 					           "detalles" => $_POST["detalles"],
 					           "caract" => json_encode($caract),
@@ -489,6 +491,8 @@ class MvcController{
 					           "ciudad" => $_POST["ciudad"],
 					           "estado" => $_POST["estado"],
 					           "CP" => $_POST["CP"],
+					           "latitud" => $_POST["latitud"],
+					           "longitud" => $_POST["longitud"],
 					           "detalles" => $_POST["detalles"],
 					           "condiciones" => $_POST["condiciones"],
 					           "caract" => json_encode($caract),

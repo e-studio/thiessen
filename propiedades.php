@@ -23,29 +23,12 @@
 <div class="properties-section-body content-area">
     <div class="container">
         <div class="row">
-            <div class="offset-lg-1 col-lg-10">
+            <div class="offset-lg-1 col-lg-11">
 
                 <?php
 	                $propiedades = new propiedades();
 	                $propiedades -> todasPropiedades();
 	            ?>
-
-                <!-- Page navigation start
-                <div class="pagination-box hidden-mb-45 text-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#">Prev</a>
-                            </li>
-                            <li class="page-item"><a class="page-link active" href="properties-list-rightside.html">1</a></li>
-                            <li class="page-item"><a class="page-link" href="properties-list-leftsidebar.html">2</a></li>
-                            <li class="page-item"><a class="page-link" href="properties-list-fullwidth.html">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="properties-list-rightside.html">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>-->
             </div>
         </div>
     </div>
@@ -59,7 +42,6 @@
 
 
 <?php include "views/modules/footer.php"; ?>
-
 
 <script src="views/js/jquery-2.2.0.min.js"></script>
 <script src="views/js/popper.min.js"></script>
@@ -88,5 +70,13 @@
 <script  src="views/js/ie10-viewport-bug-workaround.js"></script>
 
 
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+crossorigin=""></script>
+
+
+<script src="views/js/mapas/API.js"></script>
+<script src="views/js/mapas/UI.js"></script>
+<script src="views/js/mapas/app.js"></script>
 </body>
 </html>

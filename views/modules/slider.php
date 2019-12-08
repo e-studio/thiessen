@@ -2,7 +2,7 @@
 <?php
 // desordena los numero del 1 al 6 y los pone en un array $rand para mostrar diferentes fotos en el banner
 // cada vez que se accese la pagina
-$rand = range(1, 6);
+$rand = range(1, 11);
 shuffle($rand);
 ?>
 

@@ -60,10 +60,11 @@ include "navAdmin.php";
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label>Tipo</label>
+                                <label>Status</label>
                                 <select class="selectpicker search-fields" name="status">
                                     <option value="Venta" <?php if ($busqueda['status']=="Venta") echo 'selected'; ?> >Venta</option>
                                     <option value="Renta" <?php if ($busqueda['status']=="Renta") echo 'selected'; ?> >Renta</option>
+                                    <option value="Vendida" <?php if ($busqueda['status']=="Vendida") echo 'selected'; ?> >Vendida</option>
                                 </select>
                             </div>
                         </div>
@@ -235,6 +236,19 @@ include "navAdmin.php";
                                     <option value="31">Yucatán</option>
                                     <option value="32">Zacatecas</option>-->
                                 </select>
+                            </div>
+                        </div>
+
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Latitud</label>
+                                <input type="text" class="form-control" name="latitud"  placeholder="Latitud" value="<?php echo $busqueda["latitud"]; ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Longitud</label>
+                                <input type="text" class="form-control" name="longitud"  placeholder="longitud" value="<?php echo $busqueda["longitud"]; ?>">
                             </div>
                         </div>
                 </div>

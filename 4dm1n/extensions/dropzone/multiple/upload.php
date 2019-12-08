@@ -12,8 +12,8 @@
 
 
 list($ancho, $alto) = getimagesize($_FILES["file"]["tmp_name"]);
-$nuevoAncho = 730;
-$nuevoAlto = 486;
+$nuevoAncho = 1500;
+$nuevoAlto = 1500;
 $ruta = "../../../views/img/propiedades/".$_FILES['file']['name'];
 /*=============================================
 DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
